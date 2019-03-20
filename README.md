@@ -1,7 +1,8 @@
 # README
 
-- 配合传统SSM/JavaEE项目的前端脚手架
-- 前端技术：jquery + layui -> IE8+兼容
+> 配合传统SSM/JavaEE项目的前端脚手架
+
+- 前端技术：gulp + browserSync + jquery + layui(IE8+)
 
 ---
 
@@ -67,7 +68,6 @@ spring:
 //  _style.less
 @import "../../../src/assets/css/_base/_importAll";
 ```
-
     
 # 目录结构
 
@@ -104,6 +104,10 @@ spring:
 ```  
 
 ![项目结构说明](readme.png)  
+
+# 注意
+
+- 新增/删除文件 要重启项目
 
 ---
 

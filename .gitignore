@@ -119,7 +119,7 @@ dependency-reduced-pom.xml
 ### 自定义 ###
 rebel.xml
 __tmp
-upload
+/upload
 uploads
 out
 /static

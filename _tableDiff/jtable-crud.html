@@ -4,23 +4,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Title</title>
-    <!--<link rel="dns-prefetch" href="//cdn.cn/">-->
+    <title>jtable</title>
 
-    <!--<link rel="preload" href="//cdn.cn/webfont.woff2" as="font">-->
-    <!--<link rel="preload" as="font" crossorigin href="https://at.alicdn.com/t/font_zck90zmlh7hf47vi.woff">-->
-    <!--<link rel="preload" href="//cdn.cn/Page1-A.js" as="script">-->
-    <!--<link rel="preload" href="//cdn.cn/Page1-B.js" as="script">-->
-
-    <!--<link rel="prefetch" href="//cdn.cn/Page2.js">-->
-    <!--<link rel="prefetch" href="//cdn.cn/Page3.js">-->
-    <!--<link rel="prefetch" href="//cdn.cn/Page4.js">-->
-
-    <!-- <link href="https://cdn.bootcss.com/tailwindcss/0.7.3/utilities.min.css" rel="stylesheet"> -->
     @@include('../src/include/local/jtable.css.inc')
-    <style type="text/css">
-        /* 首页用到的CSS内联 */
-    </style>
+    @@include('../src/include/jquery-ui.css.inc')
 
     <!--[if lt IE 9]>
     <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -34,10 +21,9 @@
 
 
 @@include('../src/include/jquery.js.inc')
+@@include('../src/include/jquery-ui.js.inc')
 @@include('../src/include/local/jtable.js.inc')
 
-<!--<script type="text/javascript" src="//cdn.cn/Page1-A.js" defer></script>-->
-<!--<script type="text/javascript" src="//cdn.cn/Page1-B.js" defer></script>-->
 
 <script>
     $(function () {
@@ -47,11 +33,15 @@
             pageSize: 10, //Actually this is not needed since default value is 10.
             sorting: true, //Enables sorting
             defaultSorting: 'Name ASC', //Optional. Default sorting on first load.
+            ajaxSettings: {
+                type: 'get',
+                dataType: 'json'
+            },
             actions: {
-                listAction: '/PagingAndSorting.aspx/StudentList',
-                createAction: '/PagingAndSorting.aspx/CreateStudent',
-                updateAction: '/PagingAndSorting.aspx/UpdateStudent',
-                deleteAction: '/PagingAndSorting.aspx/DeleteStudent'
+                listAction: '/api/jtables.json',
+                // createAction: '/PagingAndSorting.aspx/CreateStudent',
+                // updateAction: '/PagingAndSorting.aspx/UpdateStudent',
+                // deleteAction: '/PagingAndSorting.aspx/DeleteStudent'
             },
             fields: {
                 StudentId: {
@@ -81,7 +71,7 @@
                 CityId: {
                     title: 'City',
                     width: '12%',
-                    options: '/PagingAndSorting.aspx/GetCityOptions'
+                    options: '/api/jtables-citys.json'
                 },
                 BirthDate: {
                     title: 'Birth date',
