@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="viewer-0.3.1.min.css">
+
+
+    <style>
+    * { margin: 0; padding: 0;}
+    /*#jq22 { width: 700px; margin: 0 auto; font-size: 0;}*/
+    /*#jq22 li { display: inline-block; width: 32%; margin-left: 1%; padding-top: 1%;}*/
+    #jq22 img { width: 100%; display: none}
+    </style>
+</head>
+<body>
+
+    <div id="jq22">
+        <img src="" data-original="http://h.hiphotos.baidu.com/image/h%3D300/sign=226c1a7a0f087bf462ec51e9c2d2575e/37d3d539b6003af3057ef951382ac65c1038b63e.jpg">
+        <img src="">
+        <img src="" data-original="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1534832337400&di=af6326eb2e23e07e59d940afe542fd06&imgtype=0&src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201402%2F25%2F20140225171138_54uGn.thumb.700_0.jpeg">
+    </div>
+
+    <table id="table">
+        <tr>
+            <td>
+                <button class="btn" type="button">预览1</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn" type="button">预览2(无图)</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn" type="button">预览3</button>
+            </td>
+        </tr>
+    </table>
+
+
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="viewer-0.3.1.min.js"></script>
+    <script src="viewer-jquery-0.5.0.min.js"></script>
+
+
+    <script>
+        // var viewer = new Viewer(document.getElementById('jq22'), {
+        //     url: 'data-original',
+        //     navbar: false,
+        // });
+
+        $('#jq22').viewer({
+            url: 'data-original',
+            navbar: false,
+            fullscreen: true
+        });
+
+        $('#table .btn').on('click', function () {
+            var $i = $(this).parents('tr').index()
+            $('#jq22').find('img').eq($i).trigger('click')
+        })
+    </script>
+    
+</body>
+</html>

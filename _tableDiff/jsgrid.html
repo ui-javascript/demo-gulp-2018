@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title2</title>
+    <link href="https://cdn.staticfile.org/jsgrid/1.5.3/jsgrid.min.css" rel="stylesheet">
+    <link href="https://cdn.staticfile.org/jsgrid/1.5.3/jsgrid-theme.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/_style.css">
+
+</head>
+<body>
+
+<!--<button id="btn_show_layer">打开弹框</button>-->
+
+
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/handlebars.js/4.0.11/handlebars.min.js"></script>
+<script src="https://cdn.bootcss.com/layer/3.1.0/layer.js"></script>
+<script src="https://cdn.staticfile.org/jsgrid/1.5.3/jsgrid.min.js"></script>
+
+
+
+    <div class="layerTable">
+        <div class="container">
+
+            <div id="toolbar_search">
+                <label class="field-label">公司名称：</label>
+                <input id="input_company_name" class="pure-input w-200" type="text">
+                <label class="field-label ml-10">会员代表：</label>
+                <input id="input_member_info" class="pure-input w-180" type="text">
+            </div>
+
+            <div class="tc mt-20">
+                <div id="jsGrid" class="inline-block"></div>
+            </div>
+
+            <div class="clearfix mt-15">
+                <div class="tc">
+                    <button id="btn_close_layer_table" class="pure-btn round w-120">关闭</button>
+                    <button id="btn_layer_confirm" class="pure-btn orange round w-120 ml-20">确认</button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+<script>
+
+    var data = []
+
+    $(function () {
+
+
+        // 初始化表格
+        function initTable() {
+            // 测试数据
+            var clients = [
+                { "name": "我的滑板鞋", "age": 25, "country": 1, "address": "Ap #897-1459 Quam Avenue", "married": false },
+                { "name": "Connor Johnston", "age": 45, "country": 2, "address": "Ap #370-4647 Dis Av.", "married": true },
+                { "name": "中文名适时", "age": 29, "country": 3, "address": "Ap #365-8835 Integer St.", "married": false },
+                { "name": "Lacey Hess", "age": 29, "country": 3, "address": "Ap #365-8835 Integer St.", "married": false },
+                { "name": "Lacey Hess", "age": 29, "country": 3, "address": "Ap #365-8835 Integer St.", "married": false },
+                { "name": "Lacey Hess", "age": 29, "country": 3, "address": "Ap #365-8835 Integer St.", "married": false },
+                { "name": "Lacey Hess", "age": 29, "country": 3, "address": "Ap #365-8835 Integer St.", "married": false },
+                { "name": "Lacey Hess", "age": 29, "country": 3, "address": "Ap #365-8835 Integer St.", "married": false },
+                { "name": "Lacey Hess", "age": 29, "country": 3, "address": "Ap #365-8835 Integer St.", "married": false },
+                { "name": "Lacey Hess", "age": 29, "country": 3, "address": "Ap #365-8835 Integer St.", "married": false },
+                { "name": "Lacey Hess", "age": 29, "country": 3, "address": "Ap #365-8835 Integer St.", "married": false },
+                { "name": "Lacey Hess", "age": 29, "country": 3, "address": "Ap #365-8835 Integer St.", "married": false },
+                { "name": "Timothy Henson", "age": 56, "country": 1, "address": "911-5143 Luctus Ave", "married": false },
+                { "name": "Ramona Benton", "age": 32, "country": 3, "address": "Ap #614-689 Vehicula Street", "married": false }
+            ];
+
+
+            $("#jsGrid").jsGrid({
+                width: "650px",
+                // width: "100%",
+                height: "282px",
+
+                // inserting: true,
+                // editing: true,
+                sorting: true,
+                resize: false,
+                paging: true,
+                pageLoading: true,
+                pageSize: 6,
+                pageIndex: 1,
+                pageButtonCount: 7,
+                pagerFormat: "{first} {prev} {pages} {next} {last}",
+                pagePrevText: "上一页",
+                pageNextText: "下一页",
+                pageFirstText: "首页",
+                pageLastText: "尾页",
+                loadMessage: '加载中...',
+
+                rowClass: function(item, itemIndex) {
+                    // if (itemIndex === 0) {
+                    console.log(itemIndex)
+                    console.log(item)
+                        var $row = $("#jsGrid").jsGrid("rowByItem", item);
+                        console.log($row)
+                        // $row.data('data', item)
+                    // }
+
+                    return 'jsgrid-index-' + itemIndex
+                },
+
+                autoload: true,
+                controller: {
+                    loadData: function(filter) {
+                        console.log(filter)
+
+                        // var d = $.Deferred();
+                        // $.ajax({
+                        //     url: "/hello.json",
+                        //     dataType: "json",
+                        //     data: filter
+                        // }).done(function(response) {
+                        //     console.log(response.data)
+                        //     d.resolve(response.data);
+                        // });
+                        // return d.promise();
+
+
+                        // 返回结果格式如下
+                        // {
+                        //     data: [{}],
+                        //     itemsCount: 10
+                        // }
+                        var companyName = $.trim($('#input_company_name').val())
+                        var memberInfo = $.trim($('#input_member_info').val())
+
+                        return $.ajax({
+                            type: "get",
+                            url: "/hello.json",
+                            data: {
+                                size: filter.pageSize,
+                                page: filter.pageIndex,
+                                memberInfo: memberInfo,
+                                companyName: companyName
+                            },
+                            dataType: "JSON",
+                            success: function (res) {
+                                data = res.data
+                            }
+                        })
+                    }
+                },
+
+                // data: clients,
+                fields: [
+                    {
+                        title: '公司名称',
+                        align: 'left',
+                        width: 400,
+                        itemTemplate: function(_, item) {
+                            return '<input type="radio" class="mr-5" name="hello" value="' + item.name+ '">' + item.name
+                        },
+                    },
+                    { name: "age", title: "会员代表", type: "text", width: 150},
+                ]
+            });
+
+        }
+
+        // 表格复选事件
+        function handleCheckbox () {
+            $('#jsGrid .jsgrid-grid-body').off('click').on('click', function (e) {
+                if (e.target.className.indexOf('jsgrid-cell') > -1) {
+                    var $tr = $(e.target).parent('tr')
+                    var $radio = $tr.find('input[type="radio"]').eq(0)
+                    $radio.prop('checked', true)
+                }
+
+            })
+        }
+
+        // 关闭弹框
+        function handleCloseLayer (index) {
+            $('#btn_close_layer_table').on('click', function () {
+                layer.close(index)
+            })
+        }
+
+        // 确认
+        function handleConfirm(index) {
+            $('#btn_layer_confirm').on('click', function () {
+                // console.log('confirm')
+                var $tr = $('input[name="hello"]:checked').parents('tr')
+                console.log($tr.data('data'))
+
+                // console.log('选中' + radioVal)
+                // layer.close(index)
+            })
+        }
+
+        // 输入触发搜索
+        function handleSearch() {
+            $('#toolbar_search').find('input[type="text"]').bind("input propertychange", throttle(searchInfo, 1000, 200))
+        }
+
+        // 搜索
+        function searchInfo() {
+            console.log('进行搜索')
+
+            $("#jsGrid").jsGrid("loadData")
+        }
+
+        // 节流
+        function throttle(method , duration ,delay){
+            var timer = null,
+                // 记录下开始执行函数的时间
+                begin = new Date();
+
+            return function() {
+                var context = this,
+                    args = arguments,
+                    // 记录下当前时间
+                    current = new Date();
+                // 函数节流里的思路
+                clearTimeout(timer);
+
+                // 记录下的两个时间相减再与duration进行比较
+                if(current-begin >= duration){
+                    method.apply(context , args);
+                    begin = current;
+                }else{
+                    timer = setTimeout(function(){
+                        method.apply(context , args);
+                    } , delay);
+                }
+            }
+        }
+
+        // 打开弹框
+        function showLayer () {
+            //用jquery获取模板
+            var tpl = $("#tpl_layer_table").html()
+            var content = Handlebars.compile(tpl)({
+                // name: "XXX",
+                // content: "this is Handlebars"
+            })
+
+
+            layer.open({
+                type: 1,
+                // title: '弹框',
+                title: false,
+                // shadeClose: true,
+                maxmin: false,
+                area: ['760px', '460px'],
+                offset: 'auto',
+                content: content,
+                closeBtn: 0,
+                success: function (layero, index) {
+                    // 弹框自定义样式
+                    layer.style(index, {
+                        // width: '1000px',
+                        // top: '10px',
+                        'border-radius': '10px'
+                    })
+
+                    // 表格初始化
+                    initTable()
+                    handleSearch()
+                    handleCheckbox()
+
+                    // 关闭弹框
+                    handleCloseLayer(index)
+                    handleConfirm(index)
+                }
+            });
+        }
+
+        // 按钮点击
+        // $('#btn_show_layer').on('click', function () {
+        //     showLayer()
+        // })
+
+        initTable()
+        handleSearch()
+        handleCheckbox()
+    })
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,208 @@
+/**
+ * 提示类
+ *
+ * ========================
+ */
+@import "../util/_import_inside.less";
+
+
+// 加载等待 ==========================================
+.sunLoading {
+  height: 200px;
+  width: 200px;
+  position: absolute;
+  /*Centering*/
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+
+  border-radius: 50%;
+  background-color: #DDD;
+  overflow: hidden;
+  animation: background 4s -3.5s infinite;
+  /*Nice modern drop-shadow*/
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+#load_wrapper {
+  height: 300%;
+  width: 300%;
+  margin-left: -50px;
+  transform: translate3d(-25%, 0, 0);
+  position: relative;
+  animation: rotation 4s linear infinite;
+}
+
+#sun,
+#moon {
+  position: absolute;
+  border-radius: 50%;
+  /*Make sure they are in the middle*/
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#sun {
+  width: 80px;
+  height: 80px;
+  background-color: #FFD475;
+  top: 40px;
+  box-shadow: 0 0 15px #FFCB57;
+}
+
+#moon {
+  width: 50px;
+  height: 50px;
+  background-color: #EEE;
+  top: 450px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2) inset, 0 0 10px white;
+}
+
+#stars {
+  /*Has to be more than the amount of layers*/
+  perspective: 15px;
+
+  width: 100%;
+  animation: stars 4s linear infinite;
+  opacity: 0.8;
+}
+
+.star {
+  width: 4px;
+  height: 4px;
+  background-color: white;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.star_layer {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  /*This is to make sure the upper-Z layer's don't shift downward*/
+  transform-origin: 100px 0;
+}
+
+#loading_text {
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  position: absolute;
+  top: calc(50% - 135px);
+  transform: translateY(-50%);
+  width: 100%;
+  line-height: 1;
+  color: #555;
+  font-size: 40px;
+}
+
+@keyframes rotation {
+  0% {
+    transform: translate3d(-25%, 0, 0) rotate(0deg);
+  }
+  20% {
+    /*Sun goes down*/
+    transform: translate3d(-25%, 0, 0) rotate(50deg);
+  }
+  30% {
+    /*Moon rises*/
+    transform: translate3d(-25%, 0, 0) rotate(130deg);
+  }
+  70% {
+    /*Moon goes down*/
+    transform: translate3d(-25%, 0, 0) rotate(240deg);
+  }
+  80% {
+    /*Sun rises*/
+    transform: translate3d(-25%, 0, 0) rotate(310deg);
+  }
+  100% {
+    transform: translate3d(-25%, 0, 0) rotate(360deg);
+  }
+}
+
+@keyframes background {
+  0% {
+    background-color: #2896C3;
+  }
+  50% {
+    /*Night*/
+    background-color: #1E5267;
+  }
+  100% {
+    background-color: #2896C3;
+  }
+}
+
+@keyframes stars {
+  0% {
+    /*Invisible, not moving*/
+    opacity: 0;
+    padding-right: 0;
+  }
+  25% {
+    /*Start of movement*/
+    opacity: 0;
+    padding-right: 0;
+  }
+  50% {
+    /*Visible*/
+    opacity: 1;
+    padding-right: 25px;
+  }
+  75% {
+    opacity: 0;
+    padding-right: 50px;
+  }
+  100% {
+    opacity: 0;
+    padding-right: 0;
+  }
+}
+
+// 遮罩 ============================================
+.mask-door {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+
+  &:before,
+  &:after {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    color: #fff;
+    height: 50%;
+    text-align: center;
+    background: rgba(0, 0, 0, .5);
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+  }
+
+  &:before {
+    content: '';
+    top: 0;
+    -webkit-transform: translate(0, -100%);
+    transform: translate(0, -100%);
+  }
+
+  &:after {
+    content: attr(data-title);
+    top: 50%;
+    transform: translate(0, 100%);
+  }
+
+  &:hover:before,
+  &:hover:after {
+    opacity: 1;
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+
+}

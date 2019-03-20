@@ -1,0 +1,34 @@
+/**
+ * 页面样式
+ * ================================
+ */
+
+@import "../util/_import_inside.less";
+@import "../comp/_import.less";
+
+.bottom-nav {
+  .fixed-nav-b();
+  .center(txt-x);
+  .center(bar-y, 70px);
+  background-color: @red;
+}
+
+.box {
+  .center(txt-x);
+  .center(txt-y);
+  .size(200px, 400px);
+  .border();
+  color: @black-txt;
+  .box-hover(shadow);
+  .box-hover(move);
+}
+
+.close {
+
+  //position: absolute;
+  //top: 0;
+  //right: 0;
+  //.mt(sm);
+  //.mr(sm);
+  //.size(20px, 20px);
+}

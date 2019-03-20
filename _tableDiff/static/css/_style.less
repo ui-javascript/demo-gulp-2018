@@ -1,0 +1,461 @@
+// 常用工具类
+@import "../../../src/assets/css/_base/_importAll";
+
+// dataTables改造成layui表格样式
+@import "datatables-to-layui-table-custom";
+
+//.dataTables_wrapper {
+//  width: 600px;
+//  margin: 0 auto;
+//}
+
+
+// 颜色
+@black: #333;
+@gray: #ddd;
+@gray-field: #5d5d5d;
+@gray-light: #d9d9d9;
+@orange: #fe611a;
+@white: white;
+
+body {
+  //background: teal;
+}
+
+/**
+ * ===========================
+ * 可复用
+ * ===========================
+ */
+
+/*清除ie的默认选择框样式清除，隐藏下拉箭头*/
+//select::-ms-expand { display: none; }
+
+// 支付步骤条
+.step-bar {
+
+  margin-top: 20px;
+
+  //> .container {
+  //  width: 1000px;
+  //}
+
+  &__bar {
+    width: 229px;
+    height: 33px;
+    background-size: cover;
+  }
+
+  &__bar1 {
+    margin-top: -1px;
+
+    background: url(/static/images/step_1.png) no-repeat;
+
+    &.active {
+
+      background: url(/static/images/step_1_active.png) no-repeat;
+    }
+  }
+
+  &__bar2 {
+
+    margin-left: -1px;
+
+    background: url(/static/images/step_2.png) no-repeat;
+
+    &.active {
+      margin-top: -1px;
+      background: url(/static/images/step_2_active.png) no-repeat;
+    }
+  }
+
+  &__bar3 {
+
+
+    background: url(/static/images/step_3.png) no-repeat;
+
+    margin-left: -1px;
+    &.active {
+      background: url(/static/images/step_3_active.png) no-repeat;
+    }
+  }
+
+  &__bar4 {
+    margin-top: -1px;
+    background: url(/static/images/step_4.png) no-repeat;
+
+    &.active {
+      background: url(/static/images/step_4_active.png) no-repeat;
+    }
+  }
+
+}
+
+.step-txt {
+
+  margin-top: 10px;
+
+  &__bar {
+    width: 228px;
+    text-align: center;
+    color: @gray-field;
+    font-size: 18px;
+  }
+}
+
+// 搜索框
+.pure-input {
+  padding: 0 15px 0 15px;
+  border: 1px solid @gray-light;
+  border-radius: 5px;
+  height: 35px;
+
+  &.search {
+    padding: 0 28px 0 15px;
+    background: url(/static/images/icon_glass.png) right center no-repeat;
+  }
+
+  /* 使用webkit内核的浏览器 */
+  &::-webkit-input-placeholder {
+    color: @gray-light;
+    letter-spacing: 2px;
+  }
+  /* Firefox版本4-18 */
+  &:-moz-placeholder {
+
+  }
+  /* Firefox版本19+ */
+  &::-moz-placeholder {
+
+  }
+  /* IE浏览器 */
+  &:-ms-input-placeholder {
+
+  }
+
+}
+
+// 域标签
+.field-label {
+  color: @gray-field;
+  height: 35px;
+  line-height: 35px;
+  display: inline-block;
+  font-size: 22px;
+  letter-spacing: 2px;
+
+  &.required {
+    &:before {
+      content: '*';
+      color: @orange;
+      font-size: 150%;
+      position: relative;
+      top: 10px;
+      margin-right: 2px;
+    }
+  }
+}
+
+// 下拉菜单
+.pure-select {
+  border: 1px solid @gray-light;
+  border-radius: 5px;
+  height: 35px;
+  padding: 0 0 0 12px;
+
+  /*清除ie的默认选择框样式清除，隐藏下拉箭头*/
+  //&::-ms-expand { display: none; }
+}
+
+// 按钮
+.pure-btn {
+
+  cursor: pointer;
+  //display: inline-block;
+  padding: 10px;
+  letter-spacing: 3px;
+  border: 1px solid @gray-light;
+  border-radius: 8px;
+
+  &.sm {
+
+  }
+
+  &.lg {
+    font-size: 25px;
+  }
+
+  &.orange {
+    color: @white;
+    background: @orange;
+    //font-weight: bold;
+  }
+
+  &.round {
+    border-radius: 20px;
+  }
+
+}
+
+// 提示信息
+.tip-txt {
+
+  font-style: italic;
+  letter-spacing: 3px;
+  font-size: 20px;
+
+  &:before {
+    content: '·';
+    //font-size: 150%;
+    font-weight: bold;
+    //position: relative;
+    //top: 5px;
+    margin-right: 2px;
+  }
+
+  &.orange {
+    color: @orange;
+
+    &:before {
+      color: @orange;
+    }
+  }
+}
+
+
+/**
+ * ===========================
+ * 插件样式修改
+ * ===========================
+ */
+.jsgrid-table {
+  border-radius: 10px;
+}
+.jsgrid-header-row>.jsgrid-header-cell {
+  color: @gray-field;
+}
+.jsgrid-header-row {
+  border-radius: 10px;
+}
+.jsgrid-header-row>.jsgrid-header-cell:first-child {
+  border-radius: 10px;
+}
+
+.jsgrid-table {
+  color: @gray-field;
+}
+
+.jsgrid-pager-nav-button a,
+.jsgrid-pager-page a {
+  text-decoration: none;
+  color: @black;
+}
+
+.jsgrid-header-sort-desc:before {
+  border-color: @orange transparent transparent!important;
+}
+.jsgrid-header-sort-asc:before {
+  //border-width: 0 5px 5px;
+  border-color: transparent transparent @orange!important;
+}
+
+/**
+ * ================================
+ * 业务代码
+ * ================================
+ */
+
+.pagePay {
+  width: 915px;
+
+
+  > .container {
+    width: 915px;
+  }
+
+  &__item {
+    display: none;
+
+    &.active,
+    &.curr {
+      display: block;
+    }
+
+  }
+
+}
+
+.memberForm {
+  margin-top: 50px;
+
+  .field-label {
+    width: 140px;
+    text-align: right;
+  }
+
+  > .container {
+    width: 750px;
+  }
+
+  .pure-input {
+    width: 600px;
+  }
+
+  .pure-select {
+
+    width: 300px;
+
+    &.first {
+      width: 280px;
+    }
+
+    &.second {
+      width: 300px;
+    }
+  }
+
+  .pure-btn {
+    width: 250px;
+  }
+
+}
+
+// 完善信息表单
+.detailForm {
+  margin-top: 50px;
+
+  .field-label {
+    text-align: right;
+  }
+
+  > .container {
+    width: 800px;
+  }
+
+  .pure-btn {
+    width: 220px;
+  }
+}
+
+// 会费缴纳表单
+.feeForm {
+  margin-top: 50px;
+
+  > .container {
+    width: 750px;
+  }
+
+  .pure-btn {
+    width: 220px;
+  }
+
+}
+
+.payPicker {
+  width: 600px;
+  border: 1px solid @gray-light;
+  border-radius: 5px;
+  padding: 10px 20px 30px 20px;
+
+  &__radio {
+
+    margin-top: 10px;
+    height: 50px;
+    //line-height: 50px;
+    //vertical-align: center;
+
+    input[type="radio"] {
+      position: relative;
+      top: -17px;
+    }
+  }
+}
+
+// 二维码支付
+.payQrcode {
+
+  height: 150px;
+  line-height: 150px;
+  vertical-align: middle;
+
+  &__code {
+    margin-left: 35px;
+  }
+
+  &__intro {
+    position: relative;
+    top: -20px;
+  }
+
+}
+
+// 凭证上传
+.evidenceForm {
+
+  margin-top: 50px;
+
+  .pure-btn {
+    width: 250px;
+  }
+}
+
+.uploadEvidence {
+
+  &__icon {
+    position: relative;
+    top: 16px;
+    margin-left: 10px;
+    cursor: pointer;
+    width: 60px;
+    height: 44px;
+    background: url(/static/images/icon_scanner.png) no-repeat;
+  }
+
+  &__preview {
+    position: relative;
+    margin-top: 20px;
+    width: 500px;
+    height: 200px;
+    border: 1px solid @gray-light;
+
+    &:before,
+    &:after {
+      position: absolute;
+      content: "";
+      width: 0;
+      height: 0;
+      //right: 100%;
+      left: 48%;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+    }
+
+    &:before {
+      top: -12px;
+      border-bottom: 12px solid @gray-light;
+    }
+    &:after {
+      top: -10px;
+      border-bottom: 12px solid @white;
+    }
+  }
+}
+
+.evidentSuccess {
+  margin-top: 50px;
+
+  &__tip {
+    color: @orange;
+  }
+}
+
+
+.layerTable {
+
+  padding: 30px;
+
+  &>.container {
+    width: 650px;
+  }
+}
+

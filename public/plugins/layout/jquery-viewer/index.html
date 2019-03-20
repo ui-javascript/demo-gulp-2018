@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="A jQuery plugin wrapper for Viewer.js.">
+  <meta name="author" content="Chen Fengyuan">
+  <title>jquery-viewer</title>
+  <link rel="stylesheet" href="viewer.min.css">
+</head>
+<body>
+
+  <div class="docs-pictures clearfix">
+    <img data-original="images/tibet-1.jpg" src="./images/thumbnails/tibet-1.jpg" alt="Cuo Na Lake">
+    <img data-original="images/tibet-2.jpg" src="./images/thumbnails/tibet-2.jpg" alt="Tibetan Plateau">
+  </div>
+
+
+  <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="viewer.min.js"></script>
+  <script src="jquery-viewer.min.js"></script>
+
+  <script>
+    $(function () {
+
+      $('.docs-pictures').viewer({
+        url: 'data-original',
+        // 去掉导航
+        navbar: false
+      });
+
+
+    });
+
+
+  </script>
+</body>
+</html>

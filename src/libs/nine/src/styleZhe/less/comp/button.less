@@ -1,0 +1,42 @@
+/**
+ * 按钮
+ *
+ * ========================
+ */
+
+@import "../util/_import_inside.less";
+
+// 按钮 ============================================
+.btn {
+  padding: 5px 15px;
+  border: 1px solid @blue;
+  outline: none;
+  background: @blue;
+  color: @white;
+}
+
+.btn-default {
+  color: #333;
+  background-color: @white;
+  border-color: #ccc;
+}
+
+.btn-default:focus {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #8c8c8c;
+}
+
+.btn-default:hover,
+.btn-default:active {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+
+.btn-default:active:hover,
+.btn-default:active:focus {
+  color: #333;
+  background-color: #d4d4d4;
+  border-color: #8c8c8c;
+}

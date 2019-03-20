@@ -1,0 +1,1 @@
+<script src="/static/vendor/easyui/jquery.easyui.min.js"></script>

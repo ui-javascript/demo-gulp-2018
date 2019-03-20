@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>dataTables</title>
+    <link rel="stylesheet" href="/static/css/_style.css">
+    @@include('../src/include/local/easyui.css.inc')
+
+</head>
+<body class="easyui-layout">
+
+
+<div data-options="region:'north',border:false" style="height:60px;padding:10px">north region</div>
+
+<div data-options="region:'west',split:true,title:'导航'" style="width:250px;">
+    <div class="easyui-accordion" data-options="fit:true,border:false">
+        <div title="Title1" style="padding:10px;">
+            content1
+        </div>
+        <div title="Title2" data-options="selected:true" style="padding:10px;">
+            content2
+        </div>
+        <div title="Title3" style="padding:10px">
+            content3
+        </div>
+    </div>
+</div>
+
+<div data-options="region:'east',split:true,collapsed:true,title:'East'" style="width:200px;padding:10px;">east region</div>
+
+<div data-options="region:'south',border:false" class="tc h-30 p-10">页脚版权</div>
+
+
+<div data-options="region:'center',title:'Center'">
+    <div class="w-full p-10">
+        <div class="easyui-panel" title="Nested Panel" style="width:700px;height:200px;padding:10px;">
+            <div class="easyui-layout" data-options="fit:true">
+                <div class="w-100 p-10" data-options="region:'west',split:true">IE浏览器</div>
+                <!--<div class="p-10 w-100" data-options="region:'east'">其他浏览器</div>-->
+                <div class="p-10" data-options="region:'center'">其他浏览器</div>
+            </div>
+        </div>
+
+        <div class="mt-20">
+            <input id="tt" class="easyui-textbox w-300">
+        </div>
+
+        <div class="mt-20">
+            <input id="yy" class="easyui-numberbox">
+        </div>
+
+        <div class="w-200 mt-20">
+            <span>相对body的流式??</span>
+            <input id="ii" class="easyui-numberspinner w-half">
+        </div>
+
+        <div class="mt-20">
+            <select id="cc" class="easyui-combobox w-200 h-50" name="state">
+                <option value="AL">Alabama</option>
+                <option value="AK">Alaska</option>
+                <option value="AZ">Arizona</option>
+            </select>
+
+            <input id="bb" class="easyui-combobox" name="language">
+
+            <input id="gg" class="easyui-combobox w-280" name="browser">
+
+        </div>
+
+        <div class="mt-20 ml-30 clearfix">
+            <!-- 貌似必须写style -->
+            <div class="fl w-100">
+                <input id="ss" class="easyui-slider" style="height: 300px">
+            </div>
+
+            <div id="ss_ff" class="fl fs-12 mt-20">jQuery EasyUI</div>
+        </div>
+
+        <div class="h-200"></div>
+
+    </div>
+</div>
+
+</div>
+
+
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+@@include('../src/include/local/easyui.js.inc')
+<script>
+    $(function () {
+
+        $('#yy').numberbox({
+            precision:2,
+            groupSeparator:',',
+            value: "1234567.89"
+        })
+
+        $('#tt').textbox({
+            prompt: 'Input something here!',
+            iconWidth: 22,
+            icons: [{
+                iconCls:'icon-add',
+                handler: function(e){
+                    $(e.data.target).textbox('setValue', 'Something added!');
+                }
+            },{
+                iconCls:'icon-remove',
+                handler: function(e){
+                    $(e.data.target).textbox('clear');
+                }
+            },{
+                iconCls:'icon-search',
+                handler: function(e){
+                    var v = $(e.data.target).textbox('getValue');
+                    alert('The inputed value is ' + (v ? v : 'empty'));
+                }
+            }]
+        })
+
+
+        $('#cc').combobox({
+            multiple:true,
+            multiline:true
+        })
+
+        function formatItem(row){
+            var s = '<span class="fb">' + row.text + '</span><br/>' +
+                '<span style="color:#888">' + row.desc + '</span>';
+            return s;
+        }
+        $('#bb').combobox({
+            url: '/api/combobox_data1.json',
+            method: 'get',
+            valueField: 'id',
+            textField: 'text',
+            panelWidth: 350,
+            panelHeight: 'auto',
+            formatter: formatItem
+        })
+
+        $('#gg').combobox({
+            url: '/api/combobox_data2.json',
+            method: 'get',
+            valueField:'value',
+            textField:'text',
+            groupField:'group'
+        })
+
+        $('#ii').numberspinner({
+            increment: 100,
+            value: 100
+        })
+
+        $('#ss').slider({
+            showTip: true,
+            mode: 'v',
+            reversed: false,
+            rule: [0,'|',25,'|',50,'|',75,'|',100],
+            tipFormatter: function(value){
+                return value+'px';
+            },
+            onChange: function(value){
+                $('#ss_ff').css('font-size', value);
+            }
+        })
+    })
+
+</script>
+
+</body>
+</html>

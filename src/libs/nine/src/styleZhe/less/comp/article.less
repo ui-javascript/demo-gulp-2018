@@ -1,0 +1,75 @@
+/**
+ * 文章
+ *
+ * ========================
+ */
+@import "../util/_import_inside.less";
+
+@blur-color: red;
+
+.q-hr {
+  height: 1px;
+  margin: 10px 0;
+  border: 0;
+  clear: both;
+  background-color: #e2e2e2;
+}
+
+
+// 文本选中 =========================================
+
+// 禁止文本选择
+.q-txt-noselect {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+
+// 文字效果 ==================================================
+// 用CSS让你的文字更有文艺范
+// https://juejin.im/entry/5997cd576fb9a02493220164?utm_source=gold_browser_extension
+
+// 模糊
+
+.q-txt-blur {
+  text-shadow: 0 0 5px @blur-color; // 模糊程度
+  -webkit-text-fill-color: transparent; // 底层的模糊字体体现出来
+}
+
+.q-txt-stroke {
+  -webkit-text-stroke: 1px red;
+  -webkit-text-fill-color: transparent;
+}
+
+.q-txt-metal {
+  background: linear-gradient(to bottom, white, black);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text; // 指定背景只在文字底下显示
+}
+
+.q-txt-img-bg {
+  background-size: contain;
+  background: url(../../images/bg1.jpg) no-repeat;
+
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+
+/*
+ * 卡片 =======
+ */
+
+.q-card {
+
+}
+
+
+
+
+
+
+
+

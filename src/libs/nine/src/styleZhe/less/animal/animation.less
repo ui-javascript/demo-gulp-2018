@@ -1,0 +1,103 @@
+/**
+ * 动画
+ *
+ * ========================
+ */
+
+@import "../util/_import_inside.less";
+
+
+// 球弹跳效果 =========================================
+// https://codepen.io/bmorelli25/pen/VzXJzN
+.ball {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #FF5722;
+
+  animation: bounce 0.5s;
+  animation-direction: alternate;
+  animation-timing-function: cubic-bezier(.5,0.05,1,.5);
+  animation-iteration-count: infinite;
+}
+
+@keyframes bounce {
+  from { transform: translate3d(0, 0, 0);     }
+  to   { transform: translate3d(0, 200px, 0); }
+}
+
+/* Prefix Support */
+ball {
+  -webkit-animation-name: bounce;
+  -webkit-animation-duration: 0.5s;
+  -webkit-animation-direction: alternate;
+  -webkit-animation-timing-function: cubic-bezier(.5,0.05,1,.5);
+  -webkit-animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes bounce {
+  from { -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
+  to   { -webkit-transform: translate3d(0, 200px, 0); transform: translate3d(0, 200px, 0); }
+}
+
+
+
+
+.pulse {
+  webkit-animation: pulse 1 1.2s;
+  animation: pulse 1 1.2s;
+}
+
+@keyframes pulse {
+  0% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+
+    -ms-transform: translate(0, -100px); /* IE 9 */
+    -webkit-transform: translate(0, -100px); /* Safari */
+    transform: translate(0, 100px);
+  }
+  50% {
+    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05);
+
+    -ms-transform: translate(0, 60px); /* IE 9 */
+    -webkit-transform: translate(0, 60px); /* Safari */
+    transform: translate(0, 60px);
+  }
+  100% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+
+    -ms-transform: translate(0, 40px); /* IE 9 */
+    -webkit-transform: translate(0, 40px); /* Safari */
+    transform: translate(0, 40px);
+  }
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+
+    -ms-transform: translate(0, -100px); /* IE 9 */
+    -webkit-transform: translate(0, -100px); /* Safari */
+    transform: translate(0, 100px);
+  }
+  50% {
+    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05);
+
+    -ms-transform: translate(0, 60px); /* IE 9 */
+    -webkit-transform: translate(0, 60px); /* Safari */
+    transform: translate(0, 60px);
+  }
+  100% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+
+    -ms-transform: translate(0, 40px); /* IE 9 */
+    -webkit-transform: translate(0, 40px); /* Safari */
+    transform: translate(0, 40px);
+  }
+}

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>行内编辑</title>
+
+    <link rel="stylesheet" href="/static/css/_style.css">
+    @@include('../src/include/local/easyui.css.inc')
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+    @@include('../src/include/local/easyui.js.inc')
+
+</head>
+<body>
+
+<div class="p-10">
+    <div class="w-1000">
+        <table id="simple" class="easyui-datagrid w-full h-250" title="Merge Cells for DataGrid">
+            <thead>
+            <tr>
+                <th data-options="field:'productid',width:100">Product</th>
+                <th data-options="field:'itemid',width:80">Item ID</th>
+                <th data-options="field:'listprice',width:80,align:'right'">List Price</th>
+                <th data-options="field:'unitcost',width:80,align:'right'">Unit Cost</th>
+                <th data-options="field:'attr1',width:240">Attribute</th>
+                <th data-options="field:'status',width:60,align:'center'">Status</th>
+            </tr>
+            </thead>
+        </table>
+
+        <table id="dg" class="easyui-datagrid" title="Cache Editor for DataGrid" style="width:700px;height:auto">
+            <thead>
+            <tr>
+                <th data-options="field:'itemid',width:80">Item ID</th>
+                <th data-options="field:'productid',width:100,
+						formatter:function(value,row){
+							return row.productname;
+						},
+						editor:{
+							type:'combobox',
+							options:{
+								valueField:'productid',
+								textField:'productname',
+								method:'get',
+								url:'/api/products.json',
+								required:true
+							}
+						}">Product</th>
+                <th data-options="field:'listprice',width:80,align:'right',editor:{type:'numberbox',options:{precision:1}}">List Price</th>
+                <th data-options="field:'unitcost',width:80,align:'right',editor:'numberbox'">Unit Cost</th>
+                <th data-options="field:'attr1',width:250,editor:'text'">Attribute</th>
+                <th data-options="field:'status',width:60,align:'center',editor:{type:'checkbox',options:{on:'P',off:''}}">Status</th>
+            </tr>
+            </thead>
+        </table>
+
+        <div id="tb" style="height:auto">
+            <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-save',plain:true" onclick="accept()">Accept</a>
+            <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-undo',plain:true" onclick="reject()">Reject</a>
+            <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true" onclick="getChanges()">GetChanges</a>
+        </div>
+
+    </div>
+
+
+</div>
+
+<script>
+
+
+    function onLoadSuccess(data) {
+        var merges = [{
+            index: 2,
+            rowspan: 2
+        }, {
+            index: 5,
+            rowspan: 2
+        }, {
+            index: 7,
+            rowspan: 2
+        }];
+        for (var i = 0; i < merges.length; i++) {
+            $(this).datagrid('mergeCells', {
+                index: merges[i].index,
+                field: 'productid',
+                rowspan: merges[i].rowspan
+            });
+        }
+    }
+
+    var editIndex = undefined;
+    function endEditing(){
+        if (editIndex == undefined){return true}
+        if ($('#dg').datagrid('validateRow', editIndex)){
+            var ed = $('#dg').datagrid('getEditor', {index:editIndex,field:'productid'});
+            var productname = $(ed.target).combobox('getText');
+            $('#dg').datagrid('getRows')[editIndex]['productname'] = productname;
+            $('#dg').datagrid('endEdit', editIndex);
+            editIndex = undefined;
+            return true;
+        } else {
+            return false;
+        }
+    }
+    function onClickRow(index){
+        if (editIndex != index){
+            if (endEditing()){
+                $('#dg').datagrid('selectRow', index)
+                    .datagrid('beginEdit', index);
+                editIndex = index;
+            } else {
+                $('#dg').datagrid('selectRow', editIndex);
+            }
+        }
+    }
+    function accept(){
+        if (endEditing()){
+            $('#dg').datagrid('acceptChanges');
+        }
+    }
+    function reject(){
+        $('#dg').datagrid('rejectChanges');
+        editIndex = undefined;
+    }
+    function getChanges(){
+        var rows = $('#dg').datagrid('getChanges');
+        alert(rows.length+' rows are changed!');
+    }
+
+
+
+    $('#simple').datagrid({
+        rownumbers: true,
+        singleSelect: true,
+        iconCls: 'icon-save',
+        url: '/api/datagrid_data1.json',
+        method: 'get',
+        onLoadSuccess: onLoadSuccess
+    })
+
+    $('#dg').datagrid({
+        iconCls: 'icon-edit',
+        singleSelect: true,
+        toolbar: '#tb',
+        url: '/api/datagrid_data1.json',
+        method: 'get',
+        onClickRow: onClickRow
+    })
+
+</script>
+
+
+<script>
+
+</script>
+</body>
+</html>

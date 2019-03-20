@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <!--<link rel="dns-prefetch" href="//cdn.cn/">-->
+
+    <!--<link rel="preload" href="//cdn.cn/webfont.woff2" as="font">-->
+    <!--<link rel="preload" as="font" crossorigin href="https://at.alicdn.com/t/font_zck90zmlh7hf47vi.woff">-->
+    <!--<link rel="preload" href="//cdn.cn/Page1-A.js" as="script">-->
+    <!--<link rel="preload" href="//cdn.cn/Page1-B.js" as="script">-->
+
+    <!--<link rel="prefetch" href="//cdn.cn/Page2.js">-->
+    <!--<link rel="prefetch" href="//cdn.cn/Page3.js">-->
+    <!--<link rel="prefetch" href="//cdn.cn/Page4.js">-->
+
+    <!-- <link href="https://cdn.bootcss.com/tailwindcss/0.7.3/utilities.min.css" rel="stylesheet"> -->
+    @@include('../src/include/local/jtable.css.inc')
+    <style type="text/css">
+        /* 首页用到的CSS内联 */
+    </style>
+
+    <!--[if lt IE 9]>
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+<div id="StudentTableContainer"></div>
+
+
+@@include('../src/include/jquery.js.inc')
+@@include('../src/include/local/jtable.js.inc')
+
+<!--<script type="text/javascript" src="//cdn.cn/Page1-A.js" defer></script>-->
+<!--<script type="text/javascript" src="//cdn.cn/Page1-B.js" defer></script>-->
+
+<script>
+    $(function () {
+        $('#StudentTableContainer').jtable({
+            title: 'The Student List',
+            paging: true, //Enables paging
+            pageSize: 10, //Actually this is not needed since default value is 10.
+            sorting: true, //Enables sorting
+            defaultSorting: 'Name ASC', //Optional. Default sorting on first load.
+            actions: {
+                listAction: '/PagingAndSorting.aspx/StudentList',
+                createAction: '/PagingAndSorting.aspx/CreateStudent',
+                updateAction: '/PagingAndSorting.aspx/UpdateStudent',
+                deleteAction: '/PagingAndSorting.aspx/DeleteStudent'
+            },
+            fields: {
+                StudentId: {
+                    key: true,
+                    create: false,
+                    edit: false,
+                    list: false
+                },
+                Name: {
+                    title: 'Name',
+                    width: '23%'
+                },
+                EmailAddress: {
+                    title: 'Email address',
+                    list: false
+                },
+                Password: {
+                    title: 'User Password',
+                    type: 'password',
+                    list: false
+                },
+                Gender: {
+                    title: 'Gender',
+                    width: '13%',
+                    options: {'M': 'Male', 'F': 'Female'}
+                },
+                CityId: {
+                    title: 'City',
+                    width: '12%',
+                    options: '/PagingAndSorting.aspx/GetCityOptions'
+                },
+                BirthDate: {
+                    title: 'Birth date',
+                    width: '15%',
+                    type: 'date',
+                    displayFormat: 'yy-mm-dd'
+                },
+                Education: {
+                    title: 'Education',
+                    list: false,
+                    type: 'radiobutton',
+                    options: {'1': 'Primary school', '2': 'High school', '3': 'University'}
+                },
+                About: {
+                    title: 'About this person',
+                    type: 'textarea',
+                    list: false
+                },
+                IsActive: {
+                    title: 'Status',
+                    width: '12%',
+                    type: 'checkbox',
+                    values: {'false': 'Passive', 'true': 'Active'},
+                    defaultValue: 'true'
+                },
+                RecordDate: {
+                    title: 'Record date',
+                    width: '15%',
+                    type: 'date',
+                    displayFormat: 'dd.mm.yy',
+                    create: false,
+                    edit: false,
+                    sorting: false //This column is not sortable!
+                }
+            }
+        });
+
+        //Load student list from server
+        $('#StudentTableContainer').jtable('load');
+    })
+</script>
+
+</body>
+</html>

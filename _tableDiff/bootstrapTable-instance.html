@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>dataTables</title>
+    <link rel="stylesheet" href="/static/css/_style.css">
+
+    @@include('../src/include/bootstrap.css.inc')
+    @@include('../src/include/bootstrap-table.css.inc')
+
+</head>
+<body>
+
+<table id="table_example" data-toggle="table_example">
+
+    <!--<thead>-->
+    <!--<tr>-->
+        <!--<th>Item ID</th>-->
+        <!--<th>Item Name</th>-->
+        <!--<th>Item Price</th>-->
+    <!--</tr>-->
+    <!--</thead>-->
+    <!--<tbody>-->
+    <!--<tr>-->
+        <!--<td>1</td>-->
+        <!--<td>Item 1</td>-->
+        <!--<td>$1</td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+        <!--<td>2</td>-->
+        <!--<td>Item 2</td>-->
+        <!--<td>$2</td>-->
+    <!--</tr>-->
+    <!--</tbody>-->
+
+</table>
+
+
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+@@include('../src/include/bootstrap.js.inc')
+@@include('../src/include/bootstrap-table.js.inc')
+<script src="/static/js/_common/bootstrapTable.object.js"></script>
+<script src="/static/js/_common/treeTable.object.js"></script>
+<script src="/static/js/_config/bootstrapTable.config.js"></script>
+
+<script>
+    $(function () {
+        var defaultColunms = [
+            {field: 'selectItem', radio: true},
+            {title: 'id', field: 'id', align: 'center', valign: 'middle',width:'50px'},
+            {title: '部门简称', field: 'name', align: 'center', valign: 'middle', sortable: true},
+            {title: '薪资', field: 'salary', align: 'center', valign: 'middle', sortable: true},
+            {title: '排序', field: 'num', align: 'center', valign: 'middle', sortable: true},
+            {title: '备注', field: 'tips', align: 'center', valign: 'middle', sortable: true}
+        ]
+        
+        var table = new BSTable('table_example', "/api/api-object.json", defaultColunms)
+        table.init();
+    })
+
+</script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+<script src="https://cdn.staticfile.org/artTemplate.js/3.0.1/template.js"></script>

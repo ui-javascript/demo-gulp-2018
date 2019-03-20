@@ -1,0 +1,100 @@
+/**
+ * 一些简单的表单装饰
+ */
+
+// 颜色
+@gray: #ddd;
+@gray-field: #5d5d5d;
+@gray-light: #d9d9d9;
+@orange: #fe611a;
+@white: white;
+
+
+// 搜索框
+.pure-input {
+  padding: 0 28px 0 15px;
+  border: 1px solid @gray-light;
+  border-radius: 5px;
+  height: 35px;
+
+  &.search {
+    background: url(/static/images/icon_glass.png) right center no-repeat;
+  }
+
+  /* 使用webkit内核的浏览器 */
+  &::-webkit-input-placeholder{
+    color: @gray-light;
+    letter-spacing: 2px;
+  }
+  /* Firefox版本4-18 */
+  &:-moz-placeholder{
+
+  }
+  /* Firefox版本19+ */
+  &::-moz-placeholder{
+
+  }
+  /* IE浏览器 */
+  &:-ms-input-placeholder{
+
+  }
+
+}
+
+// 域标签
+.field-label {
+  color: @gray-field;
+  height: 35px;
+  line-height: 35px;
+  display: inline-block;
+  font-size: 22px;
+  letter-spacing: 2px;
+
+  &.required {
+    &:before {
+      content: '*';
+      color: @orange;
+      font-size: 150%;
+      position: relative;
+      top: 10px;
+      margin-right: 2px;
+    }
+  }
+}
+
+// 下拉菜单
+.pure-select {
+  border: 1px solid @gray-light;
+  border-radius: 5px;
+  height: 35px;
+  padding: 0 0 0 12px;
+
+  /*清除ie的默认选择框样式清除，隐藏下拉箭头*/
+  //&::-ms-expand { display: none; }
+}
+
+// 按钮
+.pure-btn {
+
+  //display: inline-block;
+  padding: 10px;
+  letter-spacing: 3px;
+  border: 1px solid @gray-light;
+  border-radius: 8px;
+
+
+  &.sm {
+
+  }
+
+  &.lg {
+    font-size: 25px;
+  }
+
+  &.orange {
+    color: @white;
+    background: @orange;
+    //font-weight: bold;
+  }
+
+}

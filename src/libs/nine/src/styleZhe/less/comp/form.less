@@ -1,0 +1,18 @@
+/**
+ * 表单
+ *
+ * ========================
+ */
+@import "../util/_import_inside.less";
+
+// 隐藏表单上下箭头
+.al-number-noarrow {
+  input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+    -webkit-appearance: none !important;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+}
