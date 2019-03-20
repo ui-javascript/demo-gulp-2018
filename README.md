@@ -1,66 +1,78 @@
 # README
 
-- 没配eslint
-- 考虑到IE8 , jquery + layui
-- 视图是纯html 不支持jsp ftl...
+- 配合传统SSM/JavaEE项目的前端脚手架
+- 前端技术：jquery + layui -> IE8+兼容
+
+---
 
 # 使用说明
 
-- 当前的工程项目文件夹位置与build文件夹同级，并且下划线开头 
+- 工程命名
+    
+```js 
+// 项目命名
+以下划线作为开头标志进行命名, 与src保持同级
+这样可以管理多个项目 -> 小trick
+```
 
-- 引用cdn资源如下
+- 运行命令
+
+```shell
+// package.json配置命令 
+// 传递SYS_NAME这个参数
+"dev:tableDiff": "set SYS_NAME=tableDiff && gulp 01-build-dev",
+"build:tableDiff": "set SYS_NAME=tableDiff && gulp 03-build-dist",
+"sprite:tableDiff": "set SYS_NAME=tableDiff && gulp 05-make-sprite"
+```
+
+- 工程配置
+
+```
+build/config下新建工程同名文件
+进行覆盖
+```
+
+- 如果使用JSP/Freemarker
+    - 禁用html有关任务
+    - 调整资源指向
+    
+```yml
+# application-xxx.yml
+spring:
+  # 资源路径配置
+  resources:
+    static-locations: classpath:/src/assets/,classpath:/static/
+```     
+
+- 引用html片断/cdn 
 
 ```html
-<!-- 相对工程文件 eg "_melt" -->
+<!-- 文件的相对路径 -->
 @@include("./header.inc")
 @@include("../src/include/jquery.useful.js.inc")
 ```
 
-- static文件夹
-    - 需要监听编译的文件放到_melt/static下,改动会即使同步到 ./static
-    - 监听js + images + css(less)
-    - 避免static误伤
+- 资源编译
+
+    - 工程下新建static文件夹 eg.(_project/static) @attention -> 文件夹下的文件会被特殊处理
+    - _project/static/js     -> 缩编/ES6语法转译
+    - _project/static/css    -> autoprefix/less支持
+    - _project/static/images -> 图片压缩
+    - less要编译输出的文件`下划线`开头
     
-```
-_project/static/js/es6.js
-=> 
+```jsx
+// 引入资源如下 
 <script src="/static/js/es6.js"></script>
 
-less要编译的文件下划线 "_" 开头
-```
-
-- 引用全局样式
-
-```less
-// _style.less
+//  _style.less
 @import "../../../src/assets/css/_base/_importAll";
-```
-
-
-- 运行
-
-```
-{
-    "dev:designStudio": "set SYS_NAME=designStudio && gulp 01-build-dev",
-    "build:designStudio": "set SYS_NAME=designStudio && gulp 03-build-dist",
-    "sprite:designStudio": "set SYS_NAME=designStudio  && gulp 05-make-sprite",
-}
-```
-
-- 资源路径配置
-
-```yml
-spring:
-  # 此资源路径仅开发时使用
-  resources:
-    static-locations: classpath:/src/assets/,classpath:/static/
 ```
 
     
 # 目录结构
 
 ```
-├─_melt 工程文件前加下划线 "_"标识
+├─_project 工程前加下划线 "_"标识
 ├─build 构建系统
 │  ├─config
 │  │  └─system 
@@ -68,18 +80,17 @@ spring:
 │  │  └─index.js 主要的配置文件
 │  └─tasks 各种功能任务
 │  
-├─cdn 可以配成CDN的静态资源
+├─public 可以配成CDN的静态资源
 │  ├─fonts
 │  │  ├─font-awesome
-│  ├─plus 按照melt=M+E+L+T分类
+│  ├─plus 按melt=M+E+L+T分类
 │  │  ├─effects
 │  │  ├─ie
 │  │  ├─layout
 │  │  ├─model
 │  │  └─toolbox
-│  ├─tpl
 │  └─vendor
-│      ├─jquery
+│      └─jquery
 ├─src 开发目录
 │  └─assets
 │      ├─css 公用CSS
@@ -87,33 +98,29 @@ spring:
 │      │  └─common
 │      │      └─emoji
 │      └─libs 公用脚本库
-│          ├─mumuy
+│          └─mumuy
 ├─static 编译生成的静态资源(打包的话也包括CDN)
-│  ├─css
-│  ├─images
-│  │  ├─animal
-│  │  └─_sprite
-│  ├─js
-├─templates
-```    
+└─templates
+```  
 
-# BUG
+![项目结构说明](readme.png)  
 
-- 慕课网学习存在图片加载问题
+---
 
 # TODO
 
 - gulp-changed 仅发生变化的 提高性能
-- 参考tmt-workflow优化一波
-- 前端权限与简单的路由功能
+- cdn路径替换功能
+- 照着tmt-workflow结构优化一波
+- 公共库的提取
+- 前端权限
+- 前端简易路由
 - 模块化与异步
-- 样式的MD5后缀
-- less报错终止   
-- 打包压缩时没有正确剔除文件 
+- less报错终止??    
 
-# 关于部署到linux(centos)
+# 部署到centos
 
-- 阿里云配置安全组
+- (阿里云)配置安全组
 - 打开防火墙规则
 
 ```shell 
@@ -123,7 +130,8 @@ service iptables save
 iptables -nvL // 查看规则
 ```
 
-- gulp 生成一下软链接 也可能需要全局安装一下browserSync
+- gulp 生成软链接 
+    - 可能需要全局安装一下browserSync
 
 ```shell
 unzip dist.zip -d ./dist

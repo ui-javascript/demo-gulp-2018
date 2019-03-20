@@ -4,7 +4,7 @@
 
 var fs = require('fs');
 
-var sysName = 'door'
+var sysName = 'project'
 if (process.env.SYS_NAME) {
     sysName = process.env.SYS_NAME.toString().trim()
 }
