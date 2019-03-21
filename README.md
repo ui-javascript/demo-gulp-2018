@@ -89,6 +89,10 @@ sprite -> dev(需要重启)
 
 - 字体子集化
 
+```
+"fontSpider:tableDiff": "set SYS_NAME=tableDiff && gulp 07-font-spider"
+```
+
 ![](__doc/how-to-use-font.png) 
     
 - pwa
@@ -141,7 +145,7 @@ sprite -> dev(需要重启)
 └─templates
 ```  
 
-![项目结构说明](__doc/readme.png)  
+![项目结构说明](__doc/category.png)  
 
 # 注意
 
