@@ -72,7 +72,6 @@ spring:
 
 ![](__doc/how-to-use-sprite.png)    
 
-- 字体子集化
 
 ```
 // 配置命令
@@ -86,7 +85,11 @@ spring:
 // @attention
 sprite -> dev(需要重启)
 合成的雪碧图会拷贝到编译目录
-```    
+```   
+
+- 字体子集化
+
+![](__doc/how-to-use-font.png) 
     
 - pwa
 
