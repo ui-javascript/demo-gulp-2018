@@ -18,7 +18,8 @@
 
     "dev:tableDiff": "set SYS_NAME=tableDiff && gulp 01-build-dev",
     "build:tableDiff": "set SYS_NAME=tableDiff && gulp 03-build-dist",
-    "sprite:tableDiff": "set SYS_NAME=tableDiff && gulp 05-make-sprite"
+    "sprite:tableDiff": "set SYS_NAME=tableDiff && gulp 05-make-sprite",
+    "fontSpider:tableDiff": "set SYS_NAME=tableDiff && gulp 07-font-spider"
   },
   "author": "luo0412",
   "devDependencies": {

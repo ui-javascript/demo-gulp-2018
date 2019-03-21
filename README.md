@@ -72,6 +72,8 @@ spring:
 
 ![](__doc/how-to-use-sprite.png)    
 
+- 字体子集化
+
 ```
 // 配置命令
 "sprite:tableDiff": "set SYS_NAME=tableDiff && gulp 05-make-sprite"
