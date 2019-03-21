@@ -23,7 +23,6 @@
 // 传递SYS_NAME这个参数
 "dev:tableDiff": "set SYS_NAME=tableDiff && gulp 01-build-dev",
 "build:tableDiff": "set SYS_NAME=tableDiff && gulp 03-build-dist",
-"sprite:tableDiff": "set SYS_NAME=tableDiff && gulp 05-make-sprite"
 ```
 
 - 工程配置
@@ -68,6 +67,24 @@ spring:
 //  _style.less
 @import "../../../src/assets/css/_base/_importAll";
 ```
+
+- 雪碧图
+
+![](__doc/how-to-use-sprite.png)    
+
+```
+// 配置命令
+"sprite:tableDiff": "set SYS_NAME=tableDiff && gulp 05-make-sprite"
+
+// 使用
+.icon-email {
+  .sprite(@icon-email);
+}
+
+// @attention
+sprite -> dev(需要重启)
+合成的雪碧图会拷贝到编译目录
+```    
     
 - pwa
 
@@ -119,7 +136,7 @@ spring:
 └─templates
 ```  
 
-![项目结构说明](readme.png)  
+![项目结构说明](__doc/readme.png)  
 
 # 注意
 
