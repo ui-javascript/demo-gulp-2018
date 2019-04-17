@@ -36,7 +36,8 @@
             // data: 'json',
             contentType: 'application/json',
             dataType: 'json',
-            url: "/api/api-array-pure.json",
+            // url: "/api/api-array-pure.json",
+            url: "/api/api-object.json",
             // 禁用 AJAX 数据缓存，
             // cache: false,
 
@@ -46,6 +47,12 @@
             pageSize: 10,
             // 首页页码
             pageNumber: 1,
+            // responseHandler: function (res) {
+            //     return {
+            //         "data": res.items,
+            //         "total": res.recordsTotal
+            //     }
+            // },
             // 服务器端分页 @attention
             // sidePagination: 'server',
 
