@@ -1,10 +1,47 @@
 # README
 
-> 配合传统SSM/JavaEE项目的前端脚手架
+> 配合传统JavaEE项目使用的前端脚手架
 
 - 前端技术：gulp + browserSync + jquery + layui(IE8+)
 
 ---
+
+    
+# 目录结构
+
+```
+├─_project 工程前加下划线 "_"标识
+├─build 构建系统
+│  ├─config
+│  │  └─system 
+│  │      └─melt.js 优先级覆盖 melt.js > index.js
+│  │  └─index.js 主要的配置文件
+│  └─tasks 各种功能任务
+│  
+├─public 可以配成CDN的静态资源
+│  ├─fonts
+│  │  ├─font-awesome
+│  ├─plus 按melt=M+E+L+T分类
+│  │  ├─effects
+│  │  ├─ie
+│  │  ├─layout
+│  │  ├─model
+│  │  └─toolbox
+│  └─vendor
+│      └─jquery
+├─src 开发目录
+│  └─assets
+│      ├─css 公用CSS
+│      ├─images 公用图片
+│      │  └─common
+│      │      └─emoji
+│      └─libs 公用脚本库
+│          └─mumuy
+├─static 编译生成的静态资源(打包的话也包括CDN)
+└─templates
+```  
+
+![项目结构说明](__doc/category.png)  
 
 # 使用说明
 
@@ -12,8 +49,9 @@
     
 ```js 
 // 项目命名
-以下划线作为开头标志进行命名, 与src保持同级
-这样可以管理多个项目 -> 小trick
+以下划线作为开头
+与src保持同级
+安装一次 管理多个项目
 ```
 
 - 运行命令
@@ -32,9 +70,9 @@ build/config下新建工程同名文件
 进行覆盖
 ```
 
-- 如果使用JSP/Freemarker
-    - 禁用html有关任务
-    - 调整资源指向
+- 配合JSP/Freemarker
+    - 禁用与html有关任务
+    - 后台调整资源指向
     
 ```yml
 # application-xxx.yml
@@ -46,25 +84,25 @@ spring:
 
 - 引用html片段/cdn 
 
-```html
-<!-- 文件的相对路径 -->
+```js
+// @attention 使用文件的相对路径 
 @@include("./header.inc")
 @@include("../src/include/jquery.useful.js.inc")
 ```
 
 - 资源编译
 
-    - 工程下新建static文件夹 eg.(_project/static) @attention -> 文件夹下的文件会被特殊处理
+    - 工程下新建的static文件夹, 其中的文件会被如下处理
     - _project/static/js     -> 缩编/ES6语法转译
-    - _project/static/css    -> autoprefix/less支持
-    - _project/static/images -> 图片压缩
-    - less要编译输出的文件`下划线`开头
+    - _project/static/css/_*.less -> autoprefix/less支持
+    - _project/static/images -> 图片压缩/雪碧图
     
 ```jsx
 // 引入资源如下 
 <script src="/static/js/es6.js"></script>
 
 //  _style.less
+less要编译输出的文件`下划线`开头
 @import "../../../src/assets/css/_base/_importAll";
 ```
 
@@ -110,42 +148,7 @@ sprite -> dev(需要重启)
   }
 </script>
 ```
-    
-# 目录结构
 
-```
-├─_project 工程前加下划线 "_"标识
-├─build 构建系统
-│  ├─config
-│  │  └─system 
-│  │      └─melt.js 优先级覆盖 melt.js > index.js
-│  │  └─index.js 主要的配置文件
-│  └─tasks 各种功能任务
-│  
-├─public 可以配成CDN的静态资源
-│  ├─fonts
-│  │  ├─font-awesome
-│  ├─plus 按melt=M+E+L+T分类
-│  │  ├─effects
-│  │  ├─ie
-│  │  ├─layout
-│  │  ├─model
-│  │  └─toolbox
-│  └─vendor
-│      └─jquery
-├─src 开发目录
-│  └─assets
-│      ├─css 公用CSS
-│      ├─images 公用图片
-│      │  └─common
-│      │      └─emoji
-│      └─libs 公用脚本库
-│          └─mumuy
-├─static 编译生成的静态资源(打包的话也包括CDN)
-└─templates
-```  
-
-![项目结构说明](__doc/category.png)  
 
 # 注意
 

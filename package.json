@@ -19,7 +19,12 @@
     "dev:tableDiff": "set SYS_NAME=tableDiff && gulp 01-build-dev",
     "build:tableDiff": "set SYS_NAME=tableDiff && gulp 03-build-dist",
     "sprite:tableDiff": "set SYS_NAME=tableDiff && gulp 05-make-sprite",
-    "fontSpider:tableDiff": "set SYS_NAME=tableDiff && gulp 07-font-spider"
+    "fontSpider:tableDiff": "set SYS_NAME=tableDiff && gulp 07-font-spider",
+
+    "dev:sliderDiff": "set SYS_NAME=sliderDiff && gulp 01-build-dev",
+    "build:sliderDiff": "set SYS_NAME=sliderDiff && gulp 03-build-dist",
+    "sprite:sliderDiff": "set SYS_NAME=sliderDiff && gulp 05-make-sprite",
+    "fontSpider:sliderDiff": "set SYS_NAME=sliderDiff && gulp 07-font-spider"
   },
   "author": "luo0412",
   "devDependencies": {
