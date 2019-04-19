@@ -158,6 +158,7 @@ sprite -> dev(需要重启)
 
 # TODO
 
+- cdn拷贝
 - gulp-changed 仅发生变化的 提高性能
 - cdn路径替换功能
 - 照着tmt-workflow结构优化一波

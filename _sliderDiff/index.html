@@ -17,8 +17,9 @@
     <!--<link rel="prefetch" href="//cdn.cn/Page3.js">-->
     <!--<link rel="prefetch" href="//cdn.cn/Page4.js">-->
 
-    <!-- <link href="https://cdn.bootcss.com/tailwindcss/0.7.3/utilities.min.css" rel="stylesheet"> -->
-    <style type="text/css">
+     <link href="https://cdn.bootcss.com/tailwindcss/0.7.3/utilities.min.css" rel="stylesheet">
+     <link rel="stylesheet" href="/static/css/_style.css">
+     <style type="text/css">
         /* css 重置 */
         *{margin:0; padding:0; list-style:none; }
         body{ background:#fff; font:normal 12px/22px 宋体;  }
@@ -43,6 +44,27 @@
         .slideBox .next:hover{ filter:alpha(opacity=100);opacity:1;  }
         .slideBox .prevStop{ display:none;  }
         .slideBox .nextStop{ display:none;  }
+
+        *{margin:0; padding:0; list-style:none; }
+        body{ background:#fff; font:normal 12px/22px 宋体;  }
+        img{ border:0;  }
+        a{ text-decoration:none; color:#333;  }
+
+        /* 本例子css */
+        .picMarquee-top{ overflow:hidden; position:relative;  border:1px solid #ccc;   }
+        .picMarquee-top .hd{ overflow:hidden;  height:30px; background:#f4f4f4; padding:0 10px;  }
+        .picMarquee-top .hd .prev,.picMarquee-top .hd .next{ display:block;  width:9px; height:5px; float:right; margin-right:5px; margin-top:10px;  overflow:hidden;
+            cursor:pointer; background:url("./img/arrow.png") 0 -100px no-repeat;}
+        .picMarquee-top .hd .next{ background-position:0 -140px;  }
+        .picMarquee-top .hd .prevStop{ background-position:-60px -100px;  }
+        .picMarquee-top .hd .nextStop{ background-position:-60px -140px;  }
+        .picMarquee-top .bd{ padding:10px;   }
+        .picMarquee-top .bd ul{ overflow:hidden; zoom:1; }
+        .picMarquee-top .bd ul li{ text-align:center; zoom:1; }
+        .picMarquee-top .bd ul li .pic{ text-align:center; }
+        .picMarquee-top .bd ul li .pic img{ width:180px; height:90px; display:block; padding:2px; border:1px solid #ccc; }
+        .picMarquee-top .bd ul li .pic a:hover img{ border-color:#999;  }
+        .picMarquee-top .bd ul li .title{ line-height:24px;   }
 
     </style>
 
@@ -70,17 +92,73 @@
     <!-- 下面是前/后按钮代码，如果不需要删除即可 -->
     <a class="prev" href="javascript:void(0)"></a>
     <a class="next" href="javascript:void(0)"></a>
+</div>
 
+<div class="picMarquee-top mt-20 ml-20">
+    <div class="hd">
+        <a class="next"></a>
+        <a class="prev"></a>
+    </div>
+    <div class="bd">
+        <ul class="picList">
+            <li class="marqueeTable clearfix">
+                <div class="marqueeTable__first">123123</div>
+                <div class="marqueeTable__second">12333333333333333333333333333说事实上事实上飒飒事实上事实上飒飒所所所所所所撒范德萨的 </div>
+                <div class="marqueeTable__third">1212312123</div>
+            </li>
+
+            <li class="marqueeTable clearfix">
+                <div class="marqueeTable__first">123123</div>
+                <div class="marqueeTable__second">123123</div>
+                <div class="marqueeTable__third">123123</div>
+            </li>
+
+
+            <li>
+                <div class="pic"><a href="http://www.SuperSlide2.com" target="_blank"><img src="./img/pic2.jpg" /></a></div>
+                <!--<div class="title"><a href="http://www.SuperSlide2.com" target="_blank">效果图2</a></div>-->
+            </li>
+            <li>
+                <div class="pic"><a href="http://www.SuperSlide2.com" target="_blank"><img src="./img/pic3.jpg" /></a></div>
+                <!--<div class="title"><a href="http://www.SuperSlide2.com" target="_blank">效果图3</a></div>-->
+            </li>
+            <li>
+                <div class="pic"><a href="http://www.SuperSlide2.com" target="_blank"><img src="./img/pic4.jpg" /></a></div>
+                <!--<div class="title"><a href="http://www.SuperSlide2.com" target="_blank">效果图4</a></div>-->
+            </li>
+            <li>
+                <div class="pic"><a href="http://www.SuperSlide2.com" target="_blank"><img src="./img/pic5.jpg" /></a></div>
+                <!--<div class="title"><a href="http://www.SuperSlide2.com" target="_blank">效果图5</a></div>-->
+            </li>
+            <li>
+                <div class="pic"><a href="http://www.SuperSlide2.com" target="_blank"><img src="./img/pic6.jpg" /></a></div>
+                <!--<div class="title"><a href="http://www.SuperSlide2.com" target="_blank">效果图6</a></div>-->
+            </li>
+        </ul>
+    </div>
 </div>
 
 
-<!--<script src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.min.js"></script>-->
-<script type="text/javascript" src="/static/plugins/layout/superslide/jquery1.42.min.js"></script>
+<script src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.min.js"></script>
+<!--<script type="text/javascript" src="/static/plugins/layout/superslide/jquery1.42.min.js"></script>-->
 <script type="text/javascript" src="/static/plugins/layout/superslide/jquery.SuperSlide.2.1.3.js"></script>
 <!--<script type="text/javascript" src="//cdn.cn/Page1-B.js" defer></script>-->
 
 <script type="text/javascript">
-    $(".slideBox").slide({mainCell:".bd ul",autoPlay:true});
+    $(".slideBox").slide({
+        mainCell:".bd ul",
+        autoPlay:true
+    });
+
+    $(".picMarquee-top").slide({
+        mainCell:".bd ul",
+        autoPlay:true,
+        effect:"topMarquee",
+        vis:3,
+        interTime:50
+    });
+
+
 </script>
 
 </body>

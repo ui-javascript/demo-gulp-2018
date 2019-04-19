@@ -1,0 +1,40 @@
+@import "../../../src/assets/css/_variables/_importAll";
+@import "../../../src/assets/css/_base/_importAll";
+@import "../../../src/assets/css/_utils/_importAll";
+
+.marqueeTable {
+  //.box-shadow();
+
+  .border();
+   border-bottom: none;
+
+  &:last-child {
+    border-bottom: 1px solid #e2e2e2;
+  }
+
+  > div {
+    //padding-top: 20px;
+    //padding-bottom: 20px;
+    height: 40px;
+    line-height: 20px;
+    .fl;
+    //height: 50px;
+    //overflow-y: hidden;
+    .txt-elli-mult(2);
+  }
+
+  &__first {
+    width: 100px;
+    background-color: red;
+  }
+
+  &__second {
+    width: 200px;
+    background-color: teal;
+  }
+
+  &__third {
+    width: 300px;
+    background-color: blue;
+  }
+}
