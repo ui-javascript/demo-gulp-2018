@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Faster</title>
+    <!--<link rel="dns-prefetch" href="//cdn.cn/">-->
+
+    <!--<link rel="preload" href="//cdn.cn/webfont.woff2" as="font">-->
+    <!--<link rel="preload" as="font" crossorigin href="https://at.alicdn.com/t/font_zck90zmlh7hf47vi.woff">-->
+    <!--<link rel="preload" href="//cdn.cn/Page1-A.js" as="script">-->
+    <!--<link rel="preload" href="//cdn.cn/Page1-B.js" as="script">-->
+
+    <!--<link rel="prefetch" href="//cdn.cn/Page2.js">-->
+    <!--<link rel="prefetch" href="//cdn.cn/Page3.js">-->
+    <!--<link rel="prefetch" href="//cdn.cn/Page4.js">-->
+
+    <link href="https://cdn.bootcss.com/normalize/7.0.0/normalize.min.css" rel="stylesheet">
+    <!-- <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link href="https://cdn.bootcss.com/tailwindcss/0.7.3/utilities.min.css" rel="stylesheet">
+    <!--<link rel="stylesheet" href="/static/plugins/model/my97-datepicker/skin/twoer/datepicker.css">-->
+    <link rel="stylesheet" href="/static/css/_style.css">
+    <style type="text/css">
+
+    </style>
+
+    <!--[if lt IE 9]>
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+<div class="mt-20 ml-10">
+    <label class="inline-block w-100">按年选择</label>
+    <input id="d1212" class="Wdate" type="text" onfocus="WdatePicker({dateFmt:'yyyy年'})"/>
+</div>
+
+
+<div class="mt-10 ml-10">
+    <label class="inline-block w-100">按季度选择</label>
+    <input id="d1213" class="Wdate" type="text"
+           onfocus="WdatePicker({
+                // skin:'twoer',
+                dateFmt:'yyyy年MM季度',
+                disabledDates:['....-0[5-9]-..','....-1[0-2]-..'],
+                startDate: '%y-01-01'
+           })"/>
+</div>
+
+
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<!-- <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+
+<!--<script type="text/javascript" src="//cdn.cn/Page1-A.js" defer></script>-->
+<!--<script type="text/javascript" src="//cdn.cn/Page1-B.js" defer></script>-->
+
+<script src="/static/plugins/model/my97-datepicker/WdatePicker.js"></script>
+<script>
+
+</script>
+
+</body>
+</html>
