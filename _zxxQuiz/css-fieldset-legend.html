@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>fieldset legend</title>
+
+
+    <link href="https://cdn.bootcss.com/normalize/7.0.0/normalize.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/tailwindcss/0.7.3/utilities.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/_style.css">
+
+    <style type="text/css">
+        fieldset {
+            border: 0;
+            border-top: 1px dashed #ccc;
+        }
+
+
+        legend {
+            color: #999;
+            /*  @attention for IE 背景色遮挡一下 */
+            background-color: #fff;
+        }
+
+        fieldset label {
+            min-width: 50px;
+            display: inline-block;
+            text-align: left;
+            /*padding-left: 2px;*/
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+<body>
+
+<form class="w-300 p-10">
+    <fieldset>
+        <legend align="center">你是中国人吗？</legend>
+
+        <!-- div不影响无障碍访问吧??? -->
+        <div>
+            <input type="radio" name="isChinese" id="yesCh">
+            <label for="yesCh">是</label>
+        </div>
+        <div class="mt-10">
+            <input type="radio" name="isChinese" id="noCh">
+            <label for="noCh">不是</label>
+        </div>
+    </fieldset>
+    <fieldset class="bg-grey-light">
+        <legend align="center">你有港澳通行证吗？</legend>
+
+        <div>
+            <input type="radio" name="hasPassport" id="yes">
+            <label for="yes">有</label>
+        </div>
+        <div class="mt-10">
+            <input type="radio" name="hasPassport" id="no">
+            <label for="no">没有</label>
+        </div>
+    </fieldset>
+</form>
+
+<script>
+
+</script>
+
+</body>
+</html>

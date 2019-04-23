@@ -5,42 +5,92 @@
     <meta name="renderer" content="webkit|ie-comp|ie-stand"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Faster</title>
-    <!--<link rel="dns-prefetch" href="//cdn.cn/">-->
+    <title>CSS布局 quiz-1</title>
 
-    <!--<link rel="preload" href="//cdn.cn/webfont.woff2" as="font">-->
-    <!--<link rel="preload" as="font" crossorigin href="https://at.alicdn.com/t/font_zck90zmlh7hf47vi.woff">-->
-    <!--<link rel="preload" href="//cdn.cn/Page1-A.js" as="script">-->
-    <!--<link rel="preload" href="//cdn.cn/Page1-B.js" as="script">-->
+     <link href="https://cdn.bootcss.com/normalize/7.0.0/normalize.min.css" rel="stylesheet">
+     <link href="https://cdn.bootcss.com/tailwindcss/0.7.3/utilities.min.css" rel="stylesheet">
 
-    <!--<link rel="prefetch" href="//cdn.cn/Page2.js">-->
-    <!--<link rel="prefetch" href="//cdn.cn/Page3.js">-->
-    <!--<link rel="prefetch" href="//cdn.cn/Page4.js">-->
-
-    <!-- <link href="https://cdn.bootcss.com/normalize/7.0.0/normalize.min.css" rel="stylesheet"> -->
-    <!-- <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> -->
-    <!-- <link href="https://cdn.bootcss.com/tailwindcss/0.7.3/utilities.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="/static/css/_style.css">
     <style type="text/css">
+        /* 公共部分 */
+        dl {
+            line-height: 1.5;
+            margin: 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+
+            /*min-width: 200px;*/
+        }
+        dd {
+            word-break: break-all;
+            text-align: right;
+            margin-left: 0;
+        }
+
+        /* @attention 防止压扁?? */
+        dd:empty::before {
+            content: '-';
+            color: #999;
+        }
 
     </style>
 
-    <!--[if lt IE 9]>
-        <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 
 </head>
 <body>
 
-<div>
+<!--
+    CSS小测1比较好的5种布局实现demo
+    https://www.zhangxinxu.com/wordpress/2019/01/css-quiz-1/
+-->
 
-</div>
+<dl>
+    <dt>原始对比</dt>
+    <dd>长风破浪会有时直挂云帆济沧海</dd>
+</dl>
 
-<!-- <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script> -->
-<!-- <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+<dl class="mt-10 bg-grey">
+    <dt>1.流体特性实现</dt>
+    <dd style="margin: -25px 0 0 100px;">长风破浪会有时直挂云帆济沧海</dd>
+</dl>
 
-<!--<script type="text/javascript" src="//cdn.cn/Page1-A.js" defer></script>-->
-<!--<script type="text/javascript" src="//cdn.cn/Page1-B.js" defer></script>-->
+<dl class="mt-10 bg-grey-light">
+    <dt class="absolute">2.absolute布局</dt>
+    <dd class="ml-100">长风破浪会有时直挂云帆济沧海</dd>
+</dl>
+
+<dl class="flex flex-wrap mt-10 bg-grey">
+    <dt class="w-100">3.flex布局</dt>
+    <dd style="width: calc(100% - 100px)">长风破浪会有时直挂云帆济沧海</dd>
+</dl>
+
+<dl class="mt-10 bg-grey-light">
+    <dt class="fl w-100">4. float</dt>
+    <dd class="overflow-hidden">长风破浪会有时直挂云帆济沧海</dd>
+</dl>
+
+<!--<dl class="mt-10 clearfix">-->
+<!--<dt class="fl w-100">float2</dt>-->
+<!--<dd>长风破浪会有时直挂云帆济沧海</dd>-->
+<!--</dl>-->
+
+<dl class="mt-10 bg-grey" style="display: grid; grid-template-columns: auto 1fr;">
+    <dt class="w-100">5. Grid布局</dt>
+    <dd class="tr">长风破浪会有时直挂云帆济沧海</dd>
+</dl>
+
+<!--<dl class="mt-10" style="display: grid; grid-template-columns: auto 1fr;grid-column-gap: 1em;">-->
+    <!--<dt>Grid布局</dt>-->
+    <!--<dd class="tr">长风破浪会有时直挂云帆济沧海</dd>-->
+<!--</dl>-->
+
+
+
+
+
+
+
 
 <script>
 

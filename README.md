@@ -1,8 +1,13 @@
 # README
 
-> 配合传统JavaEE项目使用的前端脚手架
+一个配合传统JavaEE项目使用的前端脚手架
 
-- 前端技术：gulp + browserSync + jquery + layui(IE8+)
+# 前端技术栈
+
+- gulp3
+- browserSync 
+- jquery 
+- layui(IE8+)
 
 ---
 
