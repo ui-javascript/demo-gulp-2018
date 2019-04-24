@@ -51,6 +51,22 @@
 
 ![项目结构说明](__doc/category.png)  
 
+# TODO
+
+- cdn文件打包的拷贝
+- gulp-changed --> 仅处理发生变化的 提高性能
+- gulp-if --> 任务定制
+- cdn路径替换功能 eg. bootcdn --> localhost
+- 参照tmt-workflow优化
+- 公共库的提取压缩
+- 前端权限功能与前端路由
+- 模块化与异步处理Demo
+- less有时报错终止?? 
+
+# 注意
+
+- 新增/删除文件 要重启项目
+
 # 使用说明
 
 - 工程命名
@@ -164,24 +180,7 @@ sprite -> dev(需要重启)
 </script>
 ```
 
-
-# 注意
-
-- 新增/删除文件 要重启项目
-
----
-
-# TODO
-
-- cdn拷贝
-- gulp-changed 仅发生变化的 提高性能
-- cdn路径替换功能
-- 照着tmt-workflow结构优化一波
-- 公共库的提取
-- 前端权限
-- 前端简易路由
-- 模块化与异步
-- less报错终止??    
+   
 
 # 部署到centos
 

@@ -22,15 +22,10 @@
     "fontSpider:tableDiff": "set SYS_NAME=tableDiff && gulp 07-font-spider",
 
     "dev:sliderDiff": "set SYS_NAME=sliderDiff && gulp 01-build-dev",
-    "build:sliderDiff": "set SYS_NAME=sliderDiff && gulp 03-build-dist",
-    "sprite:sliderDiff": "set SYS_NAME=sliderDiff && gulp 05-make-sprite",
-    "fontSpider:sliderDiff": "set SYS_NAME=sliderDiff && gulp 07-font-spider",
 
     "dev:zxxQuiz": "set SYS_NAME=zxxQuiz && gulp 01-build-dev",
-    "build:zxxQuiz": "set SYS_NAME=zxxQuiz && gulp 03-build-dist",
 
-    "dev:pickerDiff": "set SYS_NAME=pickerDiff && gulp 01-build-dev",
-    "build:pickerDiff": "set SYS_NAME=pickerDiff && gulp 03-build-dist"
+    "dev:pickerDiff": "set SYS_NAME=pickerDiff && gulp 01-build-dev"
   },
   "author": "luo0412",
   "devDependencies": {
