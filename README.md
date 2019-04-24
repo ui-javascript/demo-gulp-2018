@@ -1,8 +1,9 @@
 # README
 
+```html
 一个配合传统JavaEE项目使用的前端脚手架
-
 我平时用来测试各种jQuery的插件
+```
 
 # 前端技术栈
 
@@ -77,16 +78,18 @@ build/config下新建工程同名文件
 进行覆盖
 ```
 
-- 配合JSP/Freemarker
-    - 禁用与html有关任务
+- 后台视图为JSP/Freemarker等
+    
+    - 禁用所有与html有关任务
     - 后台调整资源指向
     
 ```yml
 # application-xxx.yml
-spring:
-  # 资源路径配置
+spring: 
+  mvc:
+    static-path-pattern: /static/**
   resources:
-    static-locations: classpath:/src/assets/,classpath:/static/
+    static-locations: classpath:/static/, classpath:/public
 ```     
 
 - 引用html片段/cdn 
@@ -99,10 +102,10 @@ spring:
 
 - 资源编译
 
-    - 工程下新建的static文件夹, 其中的文件会被如下处理
-    - _project/static/js     -> 缩编/ES6语法转译
-    - _project/static/css/_*.less -> autoprefix/less支持
-    - _project/static/images -> 图片压缩/雪碧图
+    - 工程下新建一个static文件夹, 其下的文件会被如下处理 @attention
+    - `_project/static/js/*.js`          -> 缩编/ES6语法转译
+    - `_project/static/css/_*.less`      -> autoprefix/less支持
+    - `_project/static/images/(_sprite)` -> 图片压缩/雪碧图
     
 ```jsx
 // 引入资源如下 
@@ -119,15 +122,20 @@ less要编译输出的文件`下划线`开头
 
 
 ```
-// 配置命令
+// 1. 配置命令并运行
 "sprite:tableDiff": "set SYS_NAME=tableDiff && gulp 05-make-sprite"
 
-// 使用
+会生成sprite.less与压缩的图片
+
+// 2.使用
+_style.less中@import "sprite"
+
+使用方法如下 
 .icon-email {
   .sprite(@icon-email);
 }
 
-// @attention
+// 3. 重启 @attention
 sprite -> dev(需要重启)
 合成的雪碧图会拷贝到编译目录
 ```   
