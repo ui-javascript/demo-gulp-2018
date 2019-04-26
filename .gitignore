@@ -122,5 +122,8 @@ __tmp
 /upload
 uploads
 out
-/static
-/templates
+/static/*
+!/static/.gitkeep
+/templates/*
+!/templates/.gitkeep
+
