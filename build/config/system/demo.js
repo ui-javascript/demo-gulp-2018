@@ -12,7 +12,7 @@ exports.dev = {
     libsName: libsName,
     libsDevDir: `./src/assets/libs/${libsName}`,
     libsDevMods: '*',  // '{ajax,scroll}' 没空格
-    libsOutputDir: './static/vendor/libs',
+    libsOutputDir: './static/libs',
 
     copyHTMLExclude: [
         `!./_demo/**/*.{html,md,inc}`,
