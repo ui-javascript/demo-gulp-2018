@@ -40,6 +40,7 @@ gulp.task('copyHTMLLeftChanged', function () {
 gulp.task('copyGlobalImages', function () {
     // 搬运图片
     return gulp.src([
+        // 全部照搬不误 文件夹最好下划线开头
         `${config.dev.devDir}/assets/images/**/*.*`
         ])
         .pipe(gulp.dest(`${config.common.staticDir}/images`))
