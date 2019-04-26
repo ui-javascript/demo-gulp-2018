@@ -1,5 +1,7 @@
 # README
 
+@deprecated
+
 - IDEA配置less的时候注意
    
 
