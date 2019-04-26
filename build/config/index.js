@@ -30,10 +30,10 @@ exports.dev = {
     pagesDir: `./_${sysName}`,
 
     // 样式库
-    stylesDir: `./src/assets/css`,
+    stylesDir: `./src/styles`,
     stylesWatchFiles: [
         // 公共开发样式资源
-        `./src/assets/css/**/*.{less,css}`,
+        `./src/styles/**/*.{less,css}`,
         // 项目样式资源
         `./_${sysName}/static/css/**/*.{less,css}`,
     ],

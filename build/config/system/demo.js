@@ -5,7 +5,7 @@ exports.dev = {
 
     // 设置监听
     stylesWatchFiles: [
-        `./src/assets/css/components/**/*.less`,
+        `./src/styles/components/**/*.less`,
     ],
 
     // 脚本库

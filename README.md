@@ -129,7 +129,7 @@ spring:
 
 //  _style.less
 less要编译输出的文件`下划线`开头
-@import "../../../src/assets/css/_base/_importAll";
+@import "../../../src/styles/_base/_importAll";
 ```
 
 - 雪碧图
