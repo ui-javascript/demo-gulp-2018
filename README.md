@@ -94,7 +94,10 @@ build/config下新建工程同名文件
 进行覆盖
 ```
 
-- 后台视图为JSP/Freemarker等
+# 视图
+
+- 不要jade、hbs这些偏僻技术，直接html/jsx
+- 如果后台视图为JSP/Freemarker等
     
     - 禁用所有与html有关任务
     - 后台调整资源指向
@@ -108,7 +111,7 @@ spring:
     static-locations: classpath:/static/, classpath:/public
 ```     
 
-- 引用html片段/cdn 
+# 引用html片段/cdn @deprecated
 
 ```js
 // @attention 使用文件的相对路径 
@@ -116,12 +119,12 @@ spring:
 @@include("../src/include/jquery.useful.js.inc")
 ```
 
-- 资源编译
+# 资源编译
 
-    - 工程下新建一个static文件夹, 其下的文件会被如下处理 @attention
-    - `_project/static/js/*.js`          -> 缩编/ES6语法转译
-    - `_project/static/css/_*.less`      -> autoprefix/less支持
-    - `_project/static/images/(_sprite)` -> 图片压缩/雪碧图
+- 工程下新建一个static文件夹, 其下的文件会被如下处理 @attention
+- `_project/static/js/*.js`          -> 缩编/ES6语法转译
+- `_project/static/css/_*.less`      -> autoprefix/less支持
+- `_project/static/images/(_sprite)` -> 图片压缩/雪碧图
     
 ```jsx
 // 引入资源如下 
@@ -132,7 +135,7 @@ less要编译输出的文件`下划线`开头
 @import "../../../src/styles/_base/_importAll";
 ```
 
-- 雪碧图
+# 雪碧图
 
 ![](__doc/how-to-use-sprite.png)    
 
@@ -156,7 +159,7 @@ sprite -> dev(需要重启)
 合成的雪碧图会拷贝到编译目录
 ```   
 
-- 字体子集化
+# 字体子集化
 
 ```
 "fontSpider:tableDiff": "set SYS_NAME=tableDiff && gulp 07-font-spider"
@@ -164,10 +167,10 @@ sprite -> dev(需要重启)
 
 ![](__doc/how-to-use-font.png) 
     
-- pwa
+# pwa
 
-    - 安全域： localhost 或者 https
-    - 如果直接没成功起来，试着注册一下
+- 安全域： localhost 或者 https
+- 如果直接没成功起来，试着注册一下
 
 ```html
 <script>
