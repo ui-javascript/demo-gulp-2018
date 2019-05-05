@@ -1,45 +1,121 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta name="renderer" content="webkit|ie-comp|ie-stand"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Faster</title>
-    <!--<link rel="dns-prefetch" href="//cdn.cn/">-->
+    <!-- normalize -->
+    <link href="https://cdn.bootcss.com/normalize/7.0.0/normalize.min.css" rel="stylesheet">
+    <!-- tailwindcss-助手类CSS @nice  -->
+    <link href="https://cdn.bootcss.com/tailwindcss/0.7.3/utilities.min.css" rel="stylesheet">
 
-    <!--<link rel="preload" href="//cdn.cn/webfont.woff2" as="font">-->
-    <!--<link rel="preload" as="font" crossorigin href="https://at.alicdn.com/t/font_zck90zmlh7hf47vi.woff">-->
-    <!--<link rel="preload" href="//cdn.cn/Page1-A.js" as="script">-->
-    <!--<link rel="preload" href="//cdn.cn/Page1-B.js" as="script">-->
+    <!--<link href="https://cdn.bootcss.com/extjs/6.2.0/classic/theme-neptune/resources/theme-neptune-all.css" rel="stylesheet">-->
 
-    <!--<link rel="prefetch" href="//cdn.cn/Page2.js">-->
-    <!--<link rel="prefetch" href="//cdn.cn/Page3.js">-->
-    <!--<link rel="prefetch" href="//cdn.cn/Page4.js">-->
+    @@include('../src/include/local/extjs.css.inc')
 
-    <!-- <link href="https://cdn.bootcss.com/normalize/7.0.0/normalize.min.css" rel="stylesheet"> -->
-    <!-- <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> -->
-    <!-- <link href="https://cdn.bootcss.com/tailwindcss/0.7.3/utilities.min.css" rel="stylesheet"> -->
-    <style type="text/css">
-
-    </style>
-
-    <!--[if lt IE 9]>
-        <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 
 </head>
 <body>
+<div id="grid" />
 
-<!-- <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script> -->
-<!-- <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+<!--<script src="https://cdn.bootcss.com/extjs/6.2.0/ext-all.js"></script>-->
+<!--<script src="https://cdn.bootcss.com/extjs/6.2.0/classic/locale/locale-zh_CN.js"></script>-->
 
-<!--<script type="text/javascript" src="//cdn.cn/Page1-A.js" defer></script>-->
-<!--<script type="text/javascript" src="//cdn.cn/Page1-B.js" defer></script>-->
+@@include('../src/include/local/extjs.js.inc')
 
-<script>
 
+<script type="text/javascript">
+    Ext.onReady(function () {
+        var monthArray = Ext.Array.map(Ext.Date.monthNames, function (e) {
+            return [e];
+        });
+
+        var ds = Ext.create('Ext.data.Store', {
+            fields: ['month'],
+            remoteSort: true,
+            pageSize: 6,
+            proxy: {
+                type: 'memory',
+                enablePaging: true,
+                data: monthArray,
+                reader: {type: 'array'}
+            }
+        });
+
+        Ext.create('Ext.grid.Panel', {
+            renderTo: 'grid',
+            id: 'gridId',
+            width: 600,
+            height: 500,
+            title: 'Month Browser',
+            columns: [{
+                text: 'Month of the year',
+                dataIndex: 'month',
+                width: 300
+            }],
+            store: ds,
+            bbar: Ext.create('Ext.toolbar.Paging', {
+                pageSize: 6,
+                store: ds,
+                displayInfo: true
+            })
+        });
+        Ext.getCmp('gridId').getStore().load();
+
+
+        // eg. student
+        Ext.define('StudentDataModel', {
+            extend: 'Ext.data.Model',
+            fields: [
+                {name: 'name', mapping: 'name'},
+                {name: 'age', mapping: 'age'},
+                {name: 'marks', mapping: 'marks'}
+            ]
+        })
+        var ds2 = Ext.create('Ext.data.Store', {
+            model: 'StudentDataModel',
+            proxy: {
+                type: 'rest',
+                actionMethods: {
+                    read: 'GET'
+                },
+                url: '/api/ext-students.json',
+                reader: {
+                    type: 'json',
+                    root: 'data'
+                },
+            }
+        });
+        Ext.create('Ext.grid.Panel', {
+            renderTo: 'grid',
+            id: 'gridId2',
+            width: 600,
+            height: 500,
+            title: 'Student',
+            columns: [
+                {
+                    text: 'Name',
+                    dataIndex: 'name',
+                    width: 300
+                },
+                {
+                    text: 'Age',
+                    dataIndex: 'age',
+                    width: 100
+                },
+                {
+                    text: 'Marks',
+                    dataIndex: 'marks',
+                    width: 200
+                },
+            ],
+            store: ds2,
+            bbar: Ext.create('Ext.toolbar.Paging', {
+                pageSize: 2,
+                store: ds2,
+                displayInfo: true
+            })
+        });
+        Ext.getCmp('gridId2').getStore().load();
+
+    });
 </script>
 
 </body>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--<link href="https://cdn.bootcss.com/extjs/6.0.0/classic/theme-classic/resources/theme-classic-all.css" rel="stylesheet">-->
+    @@include('../src/include/local/extjs.css.inc')
+</head>
+<body>
+<div id="helloWorldPanel"></div>
+
+<!--<script src="https://cdn.bootcss.com/extjs/6.0.0/ext-all.js"></script>-->
+@@include('../src/include/local/extjs.js.inc')
+<script type="text/javascript">
+    Ext.onReady(function() {
+        Ext.create('Ext.Panel', {
+            renderTo: 'helloWorldPanel',
+            height: 100,
+            width: 200,
+            title: 'Hello world',
+            html: 'First Ext JS Hello World Program'
+        });
+
+        Ext.define('StudentDataModel', {
+            extend: 'Ext.data.Model',
+            fields: [
+                {name: 'name', mapping : 'name'},
+                {name: 'age', mapping : 'age'},
+                {name: 'marks', mapping : 'marks'}
+            ]
+        });
+    });
+
+
+</script>
+
+</body>
+</html>
