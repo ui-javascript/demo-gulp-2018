@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    @@include('../src/include/local/extjs.css.inc')
+</head>
+<body>
+<div id="helloWorldPanel"></div>
+
+@@include('../src/include/local/extjs.useful.js.inc')
+
+
+<script type="text/javascript">
+    Ext.onReady(function() {
+        Ext.onReady(function() {
+            Ext.create({
+                xtype: 'draw',
+                sprites: [{
+                    type: 'circle',
+                    fillStyle: 'red',
+                    r: 100,
+                    cx: 100,
+                    cy: 100
+                }],
+                height:205,
+                width:205,
+                renderTo:Ext.getBody()
+            });
+        });
+    });
+
+
+</script>
+
+</body>
+</html>
