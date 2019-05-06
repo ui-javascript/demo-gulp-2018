@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- normalize -->
+    <link href="https://cdn.bootcss.com/normalize/7.0.0/normalize.min.css" rel="stylesheet">
+    <!-- tailwindcss-助手类CSS @nice  -->
+    <link href="https://cdn.bootcss.com/tailwindcss/0.7.3/utilities.min.css" rel="stylesheet">
+
+    @@include('../src/include/local/extjs.css.inc')
+
+
+</head>
+<body>
+<div id="grid" />
+
+
+@@include('../src/include/local/extjs.js.inc')
+
+
+<script type="text/javascript">
+    Ext.onReady(function () {
+
+
+        // eg. student
+        Ext.define('StudentDataModel', {
+            extend: 'Ext.data.Model',
+            fields: [
+                {name: 'name', mapping: 'name'},
+                {name: 'age', mapping: 'age'},
+                {name: 'marks', mapping: 'marks'}
+            ]
+        })
+        var ds2 = Ext.create('Ext.data.Store', {
+            model: 'StudentDataModel',
+            proxy: {
+                type: 'rest',
+                actionMethods: {
+                    read: 'GET'
+                },
+                url: '/api/ext-students.json',
+                reader: {
+                    type: 'json',
+                    root: 'data'
+                },
+            }
+        });
+        Ext.create('Ext.grid.Panel', {
+            renderTo: 'grid',
+            id: 'gridId2',
+            width: 600,
+            height: 500,
+            title: 'Student',
+            columns: [
+                {
+                    text: 'Name',
+                    dataIndex: 'name',
+                    width: 300,
+                    clicksToEdit: 1,
+                    editor: 'textfield'
+                },
+                {
+                    text: 'Age',
+                    dataIndex: 'age',
+                    width: 100,
+                    clicksToEdit: 2,
+                    // editor: 'number'
+                },
+                {
+                    text: 'Marks',
+                    dataIndex: 'marks',
+                    width: 200,
+                    // xtype: 'textfield',
+                    // allowBlank: false
+                },
+            ],
+            plugins: [{
+                ptype: 'rowediting',
+                clicksToEdit: 1
+            }],
+            store: ds2,
+            bbar: Ext.create('Ext.toolbar.Paging', {
+                pageSize: 2,
+                store: ds2,
+                displayInfo: true
+            })
+        });
+        Ext.getCmp('gridId2').getStore().load();
+
+    });
+</script>
+
+</body>
+</html>
