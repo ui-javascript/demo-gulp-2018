@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Faster</title>
+
+    <link href="https://cdn.bootcss.com/normalize/7.0.0/normalize.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet">
+    <style type="text/css">
+        .ui-datepicker-calendar {
+            display: none;
+        }
+    </style>
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+<p>日期：<input type="text" id="datepicker" class="js-has-datepicker"></p>
+<div>
+    时间：<input type="text" validate alias="时间" id="datePickerMon" class="form-control data-choose-width" placeholder="请选择"/>
+</div>
+
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+<script>
+    $(function () {
+        $( "#datepicker" ).datepicker({
+            changeMonth: true,
+            changeYear: true,
+            showButtonPanel: true,
+        });
+
+        // jquery-ui日期插件datepicker仅显示年月且含有全部按钮
+        // https://blog.csdn.net/shenyi_198812/article/details/84834770
+        $('.data-choose-width').datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'yy-mm',
+            showButtonPanel: true,
+            monthNamesShort: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],
+            closeText: '选择',
+            currentText: '本月',
+            isSelMon: 'true',
+            onClose: function (dateText, inst) {
+                var month = +$("#ui-datepicker-div .ui-datepicker-month :selected").val() + 1;
+                var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                if (month < 10) {
+                    month = '0' + month;
+                }
+                this.value = year + '-' + month;
+                if (typeof this.blur === 'function') {
+                    this.blur();
+                }
+                var timeStr = $("#datePickerMon").val();
+                debugger
+
+                // $scope.applyListInfo.timeStr = timeStr + "-01";
+                // setTimeout(function () {
+                //     if("全部"==$('#datePickerMon').val()){
+                //         //查询全部的列表清单
+                //         $scope.applyListInfo.timeStr = null;
+                //         $scope.query(1);
+                //     }else{
+                //         $scope.query(1);
+                //     }
+                // },2);
+            },
+            beforeShow: function(input) {
+                setTimeout(function() {
+                    var buttonPane = $(input)
+                        .datepicker( "widget" )
+                        .find( ".ui-datepicker-buttonpane" );
+
+                    $( "<button>", {
+                        text: "全部",
+                        click: function() {
+                            $.datepicker._clearDate(input);
+                            $('#datePickerMon').val("全部");
+                        }
+                    }).addClass("ui-datepicker-close ui-state-default ui-priority-primary ui-corner-all").appendTo( buttonPane );
+                }, 1 );
+            }
+        });
+
+    })
+</script>
+
+</body>
+</html>
