@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Faster</title>
+    <link rel="dns-prefetch" href="//cdn.bootcss.com/">
+
+    <link href="https://cdn.bootcss.com/normalize/7.0.0/normalize.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/tailwindcss/0.7.3/utilities.min.css" rel="stylesheet">
+    <!--<link href="https://cdn.bootcss.com/antd/3.18.1/antd.min.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="https://unpkg.com/antd@3.18.2/dist/antd.css">
+
+    <!--[if lt IE 9]>
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+<div id="app"></div>
+<div id="app2"></div>
+
+<!-- jQuery-->
+<!--<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>-->
+<!-- React -->
+<script src="https://cdn.bootcss.com/react/16.9.0-alpha.0/umd/react.development.js"></script>
+<!--<script src="https://cdn.bootcss.com/react/16.9.0-alpha.0/umd/react.production.min.js"></script>-->
+<!--<script src="https://cdn.bootcss.com/react/16.9.0-alpha.0/umd/react.profiling.min.js"></script>-->
+<!-- React DOM -->
+<script src="https://cdn.bootcss.com/react-dom/16.8.6/umd/react-dom.development.js"></script>
+<!--<script src="https://cdn.bootcss.com/react-dom/16.8.6/umd/react-dom.production.min.js"></script>-->
+<!--<script src="https://cdn.bootcss.com/react-dom/16.8.6/umd/react-dom.profiling.min.js"></script>-->
+<!-- Babel -->
+<script src="https://cdn.bootcss.com/babel-standalone/6.26.0/babel.min.js"></script>
+<!--<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>-->
+<!--<script src="https://cdn.bootcss.com/babel-polyfill/7.4.4/polyfill.min.js"></script>-->
+<!--<script src="https://cdn.bootcss.com/babel-core/6.1.19/browser.min.js"></script>-->
+<!-- Moment -->
+<script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.24.0/moment-with-locales.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.24.0/locale/zh-cn.js"></script>
+<!--
+    Ant-Design
+    https://unpkg.com/antd@3.18.2/dist/
+-->
+<script src="https://unpkg.com/antd@3.18.2/dist/antd.min.js"></script>
+<script src="https://unpkg.com/antd@3.18.2/dist/antd-with-locales.min.js"></script>
+<!--<script src="https://cdn.bootcss.com/antd/3.18.1/antd.min.js"></script>-->
+<!--<script src="https://cdn.bootcss.com/antd/3.18.1/antd-with-locales.min.js"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/antd/3.18.2/antd.min.js"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/antd/3.18.2/antd-with-locales.min.js"></script>-->
+
+<!--<script type="text/babel" src="./react-antd.js"></script>-->
+<script type="text/babel">
+    // @attention 注意这一行不能引入
+    // import {Button, Radio, Icon} from 'antd';
+
+    class TimeNow extends React.Component {
+        constructor() {
+            super();
+            this.state = {
+                time: ''
+            }
+        }
+
+        componentDidMount = () => {
+            setInterval(() => {
+                var time = new Date().toLocaleString();
+                this.setState({
+                    time
+                });
+            }, 200);
+        }
+        render = () => {
+            const {time} = this.state;
+            return <div>时间：{time}</div>
+        }
+    }
+
+    class MessageBox extends React.Component {
+        onClick = () => {
+            alert('clicked');
+        }
+        render = () => {
+            return(<div>
+                <h1 onClick={this.onClick}>Hello World!</h1>
+                <TimeNow/>
+            </div>)
+        }
+    }
+
+    const columns = [
+        {
+            title: 'Name',
+            dataIndex: 'name',
+            render: text => <a href="javascript:;">{text}</a>,
+        },
+        {
+            title: 'Age',
+            dataIndex: 'age',
+        },
+        {
+            title: 'Address',
+            dataIndex: 'address',
+        },
+    ];
+    const data = [
+        {
+            key: '1',
+            name: 'John Brown',
+            age: 32,
+            address: 'New York No. 1 Lake Park',
+        },
+        {
+            key: '2',
+            name: 'Jim Green',
+            age: 42,
+            address: 'London No. 1 Lake Park',
+        },
+        {
+            key: '3',
+            name: 'Joe Black',
+            age: 32,
+            address: 'Sidney No. 1 Lake Park',
+        },
+        {
+            key: '4',
+            name: 'Disabled User',
+            age: 99,
+            address: 'Sidney No. 1 Lake Park',
+        },
+    ];
+
+    const rowSelection = {
+        onChange: (selectedRowKeys, selectedRows) => {
+            console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+        },
+        getCheckboxProps: record => ({
+            disabled: record.name === 'Disabled User', // Column configuration not to be checked
+            name: record.name,
+        }),
+    };
+
+    ReactDOM.render(
+        <MessageBox/>,
+        document.getElementById('app'),
+    )
+
+    ReactDOM.render(
+        <div>
+            <div className={"mt-2"}>
+                <antd.Button type="primary">Primary</antd.Button>
+                <antd.Button className="ml-2">Default</antd.Button>
+                <antd.Button className="ml-2" type="dashed">Dashed</antd.Button>
+                <antd.Button className="ml-2" type="danger">Danger</antd.Button>
+            </div>
+            <div className={"mt-2"}>
+                <antd.Table rowSelection={rowSelection} columns={columns} dataSource={data} />
+            </div>
+        </div>,
+        document.getElementById('app2'),
+    )
+
+</script>
+
+
+
+</body>
+</html>
