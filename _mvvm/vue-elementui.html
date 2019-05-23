@@ -24,10 +24,9 @@
 <body>
 
 <div id="app">
+    <button v-on:click="show">切换</button>
     <input v-model="message"/>
-
-    <p v-show="visible">{{ message }}</p>
-    <button v-on:click="show">点我</button>
+    <span v-show="visible">{{ message }}</span>
 
     <el-pagination
             @size-change="handleSizeChange"
@@ -40,11 +39,17 @@
     </el-pagination>
 </div>
 
+<!-- jQuery =========== -->
 <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
-
+<!-- Vue ============== -->
 <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+<!--<script src="https://cdn.bootcss.com/vue/2.6.10/vue.common.dev.js"></script>-->
+<!--<script src="https://cdn.bootcss.com/vue/2.6.10/vue.esm.js"></script>-->
 <!--<script src="https://cdn.bootcss.com/vue/2.6.10/vue.esm.browser.min.js"></script>-->
+<!-- Vue Runtime ====== -->
+<!--<script src="https://cdn.bootcss.com/vue/2.6.10/vue.runtime.esm.js"></script>-->
 <!--<script src="https://cdn.bootcss.com/vue/2.6.10/vue.runtime.min.js"></script>-->
+<!-- Element UI ======= -->
 <script src="https://cdn.bootcss.com/element-ui/2.8.2/index.js"></script>
 <script src="https://cdn.bootcss.com/element-ui/2.8.2/locale/zh-CN.min.js"></script>
 
