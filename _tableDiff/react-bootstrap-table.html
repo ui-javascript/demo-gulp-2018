@@ -14,8 +14,6 @@
     <link href="https://cdn.bootcss.com/react-bootstrap-table/4.3.1/react-bootstrap-table-all.min.css" rel="stylesheet">
 
 
-
-
     <!--[if lt IE 9]>
     <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
@@ -29,46 +27,54 @@
 <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://cdn.bootcss.com/react/16.9.0-alpha.0/umd/react.development.js"></script>
+<script src="https://cdn.bootcss.com/react-dom/16.8.6/umd/react-dom.development.js"></script>
+<!--<script src="https://cdn.bootcss.com/react/16.9.0-alpha.0/umd/react.development.js"></script>-->
 <!--<script src="https://cdn.bootcss.com/react/16.9.0-alpha.0/umd/react.production.min.js"></script>-->
-<script src="https://cdn.bootcss.com/react/16.9.0-alpha.0/umd/react.profiling.min.js"></script>
+<!--<script src="https://cdn.bootcss.com/react/16.9.0-alpha.0/umd/react.profiling.min.js"></script>-->
 <!--<script src="https://npmcdn.com/react-bootstrap-table/dist/react-bootstrap-table.min.js"></script>-->
 <script src="https://cdn.bootcss.com/react-bootstrap-table/4.3.1/react-bootstrap-table.min.js"></script>
 
-
-<script>
-    var ReactBsTable = window.BootstrapTable;
-    import React from 'react';
-    import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
+<script src="https://cdn.bootcss.com/babel-standalone/6.26.0/babel.min.js"></script>
 
 
-    const products = [];
+<script type="text/babel">
+  // import React from 'react';
+  // import { BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 
-    function addProducts(quantity) {
-        const startId = products.length;
-        for (let i = 0; i < quantity; i++) {
-            const id = startId + i;
-            products.push({
-                id: id,
-                name: 'Item name ' + id,
-                price: 2100 + i
-            });
-        }
+  var ReactBsTable = window.BootstrapTable;
+
+  const products = [];
+
+  function addProducts(quantity) {
+    const startId = products.length;
+    for (let i = 0; i < quantity; i++) {
+      const id = startId + i;
+      products.push({
+        id: id,
+        name: 'Item name ' + id,
+        price: 2100 + i
+      });
     }
+  }
 
-    addProducts(5);
+  addProducts(5);
 
-    export default class BasicTable extends React.Component {
-        render() {
-            return (
-                <BootstrapTable data={ products }>
-                <TableHeaderColumn dataField='id' isKey={ true }>Product ID</TableHeaderColumn>
-            <TableHeaderColumn dataField='name'>Product Name</TableHeaderColumn>
-            <TableHeaderColumn dataField='price'>Product Price</TableHeaderColumn>
-            </BootstrapTable>
-        );
-        }
+  class BasicTable extends React.Component {
+    render() {
+      return (
+        <BootstrapTable data={products}>
+          <TableHeaderColumn dataField='id' isKey={true}>Product ID</TableHeaderColumn>
+          <TableHeaderColumn dataField='name'>Product Name</TableHeaderColumn>
+          <TableHeaderColumn dataField='price'>Product Price</TableHeaderColumn>
+        </BootstrapTable>
+      );
     }
+  }
 
+  ReactDOM.render(
+    <BasicTable />,
+    document.getElementById('app'),
+  )
 </script>
 
 </body>
