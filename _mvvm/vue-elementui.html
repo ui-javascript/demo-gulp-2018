@@ -24,7 +24,7 @@
 <body>
 
 <div id="app">
-    <button v-on:click="show">切换</button>
+    <button @click="show">切换</button>
     <input v-model="message"/>
     <span v-show="visible">{{ message }}</span>
 
@@ -37,7 +37,15 @@
             layout="total, sizes, prev, pager, next, jumper"
             :total="400">
     </el-pagination>
+
+    <el-date-picker
+            size="small"
+            v-model="date"
+            type="year"
+            placeholder="选择日期">
+    </el-date-picker>
 </div>
+
 
 <!-- jQuery =========== -->
 <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -59,7 +67,8 @@
         data: {
             message: 'Hello world',
             visible: false,
-            currentPage: 4
+            currentPage: 4,
+            date: null,
         },
         methods: {
             show: function () {
