@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ztree</title>
+
+    <link href="https://cdn.bootcss.com/normalize/7.0.0/normalize.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/tailwindcss/0.7.3/utilities.min.css" rel="stylesheet">
+
+<!--    <link href="https://cdn.bootcss.com/zTree.v3/3.5.40/css/zTreeStyle/zTreeStyle.css" rel="stylesheet">-->
+    <link href="/static/plugins/model/zTree-3.5.40/css/bootstrapStyle/bootstrapStyle.css" rel="stylesheet">
+
+    <script src="https://cdn.bootcss.com/jquery/1.4.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/zTree.v3/3.5.40/js/jquery.ztree.all.min.js"></script>
+
+</head>
+<body>
+
+<div class="p-5">
+    <div id="treeDemo" class="ztree"></div>
+</div>
+
+
+<script>
+  var datas = [
+    {id: "0", name: "根目录", pid: "-1"},
+    {id: "1", name: "用户管理", pid: "0"},
+    {id: "2", name: "用户管理1", pid: "1"},
+    {id: "3", name: "用户管理2", pid: "1"},
+    {id: "4", name: "系统管理", pid: "0"},
+    {id: "5", name: "系统管理1", pid: "4"},
+    {id: "6", name: "系统管理2", pid: "4"}
+  ];
+
+  $(function () {
+    var setting = {
+      data: {
+        simpleData: {
+          enable: true,
+          idKey: "id",
+          pIdKey: "pid",
+          rootPId: "-1"
+        }
+      },
+      view: {
+        dblClickExpand: false,
+        selectedMulti: false
+      }
+    };
+
+    var zTreeObj = $.fn.zTree.init($("#treeDemo"), setting, datas);
+    console.log(zTreeObj)
+
+  });
+</script>
+
+</body>
+</html>

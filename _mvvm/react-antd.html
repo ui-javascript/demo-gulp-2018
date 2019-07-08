@@ -86,7 +86,7 @@
             alert('clicked');
         }
         render = () => {
-            return(<div>
+            return(<div className="p-5">
                 <h1 onClick={this.onClick}>Hello World!</h1>
                 <TimeNow/>
             </div>)
@@ -146,12 +146,12 @@
     };
 
     ReactDOM.render(
-        <MessageBox/>,
+        <MessageBox className={"p-5"}/>,
         document.getElementById('app'),
     )
 
     ReactDOM.render(
-        <div>
+        <div className="p-5">
             <div className={"mt-2"}>
                 <antd.Button type="primary">Primary</antd.Button>
                 <antd.Button className="ml-2">Default</antd.Button>
