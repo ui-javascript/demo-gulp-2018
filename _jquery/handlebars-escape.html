@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+     <link href="https://cdn.bootcss.com/normalize/7.0.0/normalize.min.css" rel="stylesheet">
+     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+     <link href="https://cdn.bootcss.com/tailwindcss/0.7.3/utilities.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- handlebars -->
+<script src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/handlebars.js/4.0.11/handlebars.min.js"></script>
+<script src="https://cdn.bootcss.com/layer/3.1.0/layer.js"></script>
+
+<!-- template -->
+<script id="tpl" type="text/x-handlebars-template">
+
+
+
+    <div>
+    {{ str }}
+    </div>
+
+
+    <div class="mt-10">
+        {{{ escapedStr }}}
+    </div>
+
+
+
+    <div class="mt-10">
+        {{{ str }}}
+    </div>
+
+
+</script>
+
+<script>
+  var tpl = $("#tpl").html()
+  var str = "A、W重=2.6×V体×Kn$B、Kn系数｡当H≤1m时,Kn取0.75$C、Kn系数｡当1m<H大≤2m时,Kn取0.70$D、Kn系数｡当2m<H大≤3m时,Kn取0.65$E、Kn系数｡当3m<H大≤4m时,Kn取0.60$"
+
+  var escapedStr = Handlebars.Utils.escapeExpression(str);
+
+  var content = Handlebars.compile(tpl)({
+    str: str,
+    escapedStr: escapedStr,
+  })
+
+
+   layer.open({ content: content })
+</script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/plugins/model/uploadify-2.2/uploadify.css">
+
+    <style type="text/css">
+
+    </style>
+
+
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+<input type="file" name="file_upload" id="file_upload">
+
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="/static/plugins/model/uploadify-2.2/jquery.uploadify.js"></script>
+
+<script>
+
+  $(function() {
+    $('#file_upload').uploadify({
+      'swf'      : '/static/plugins/model/uploadify-2.2/uploadify.swf',
+      'uploader' : '/static/plugins/model/uploadify-2.2/uploadify.php'
+      // Put your options here
+    });
+  });
+
+</script>
+
+</body>
+</html>

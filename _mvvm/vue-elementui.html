@@ -28,6 +28,8 @@
     <input v-model="message"/>
     <span v-show="visible">{{ message }}</span>
 
+
+
     <el-pagination
             @size-change="handleSizeChange"
             @current-change="handleCurrentChange"
@@ -44,6 +46,15 @@
             type="year"
             placeholder="选择日期">
     </el-date-picker>
+
+<!--    <div v-html="option">-->
+
+<!--    </div>-->
+
+    <div>
+        {{ option }}
+    </div>
+
 </div>
 
 
@@ -69,6 +80,7 @@
             visible: false,
             currentPage: 4,
             date: null,
+            option: 'A、W重=2.6×V体×Kn$B、Kn系数｡当H≤1m时,Kn取0.75$C、Kn系数｡当1m<H大≤2m时,Kn取0.70$D、Kn系数｡当2m<H大≤3m时,Kn取0.65$E、Kn系数｡当3m<H大≤4m时,Kn取0.60$'
         },
         methods: {
             show: function () {

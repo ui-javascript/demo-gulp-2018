@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <!--<link rel="dns-prefetch" href="//cdn.cn/">-->
+
+    <!--<link rel="preload" href="//cdn.cn/webfont.woff2" as="font">-->
+    <!--<link rel="preload" as="font" crossorigin href="https://at.alicdn.com/t/font_zck90zmlh7hf47vi.woff">-->
+    <!--<link rel="preload" href="//cdn.cn/Page1-A.js" as="script">-->
+    <!--<link rel="preload" href="//cdn.cn/Page1-B.js" as="script">-->
+
+    <!--<link rel="prefetch" href="//cdn.cn/Page2.js">-->
+    <!--<link rel="prefetch" href="//cdn.cn/Page3.js">-->
+    <!--<link rel="prefetch" href="//cdn.cn/Page4.js">-->
+
+    <!-- <link href="https://cdn.bootcss.com/tailwindcss/0.7.3/utilities.min.css" rel="stylesheet"> -->
+    <style type="text/css">
+        /* 首页用到的CSS内联 */
+        .pdfobject-container {
+            width: 600px;
+            height: 600px;
+            border: 1rem solid rgba(0,0,0,.1);
+        }
+    </style>
+
+    <!--[if lt IE 9]>
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+
+
+<div id="example1"></div>
+
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/pdfobject/2.1.1/pdfobject.min.js"></script>
+<!--<script type="text/javascript" src="//cdn.cn/Page1-A.js" defer></script>-->
+<!--<script type="text/javascript" src="//cdn.cn/Page1-B.js" defer></script>-->
+
+<script>
+    PDFObject.embed("./apple.pdf", "#example1");
+</script>
+
+
+<a href="#" download onclick="window.open('app.pdf', 'target')">下载pdf</a>
+</body>
+</html>

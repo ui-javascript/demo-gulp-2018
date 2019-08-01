@@ -24,7 +24,9 @@
     "dev:sliderDiff": "set SYS_NAME=sliderDiff && gulp 01-build-dev",
     "dev:zxxQuiz": "set SYS_NAME=zxxQuiz && gulp 01-build-dev",
     "dev:pickerDiff": "set SYS_NAME=pickerDiff && gulp 01-build-dev",
-    "dev:treeDiff": "set SYS_NAME=treeDiff && gulp 01-build-dev"
+    "dev:playerDiff": "set SYS_NAME=playerDiff && gulp 01-build-dev",
+    "dev:treeDiff": "set SYS_NAME=treeDiff && gulp 01-build-dev",
+    "dev:uuploadDiff": "set SYS_NAME=uploadDiff && gulp 01-build-dev"
   },
   "author": "luo0412",
   "devDependencies": {
