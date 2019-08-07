@@ -83,8 +83,8 @@
 ```shell
 // package.json配置命令 
 // 传递SYS_NAME这个参数
-"dev:tableDiff": "set SYS_NAME=tableDiff && gulp 01-build-dev",
-"build:tableDiff": "set SYS_NAME=tableDiff && gulp 03-build-dist",
+"dev:table": "set SYS_NAME=table && gulp 01-build-dev",
+"build:table": "set SYS_NAME=table && gulp 03-build-dist",
 ```
 
 - 工程配置
@@ -142,7 +142,7 @@ less要编译输出的文件`下划线`开头
 
 ```
 // 1. 配置命令并运行
-"sprite:tableDiff": "set SYS_NAME=tableDiff && gulp 05-make-sprite"
+"sprite:table": "set SYS_NAME=table && gulp 05-make-sprite"
 
 会生成sprite.less与压缩的图片
 
@@ -162,7 +162,7 @@ sprite -> dev(需要重启)
 # 字体子集化
 
 ```
-"fontSpider:tableDiff": "set SYS_NAME=tableDiff && gulp 07-font-spider"
+"fontSpider:table": "set SYS_NAME=table && gulp 07-font-spider"
 ```
 
 ![](__doc/how-to-use-font.png) 

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Faster</title>
+    <!--<link rel="dns-prefetch" href="//cdn.cn/">-->
+
+    <!--<link rel="preload" href="//cdn.cn/webfont.woff2" as="font">-->
+    <!--<link rel="preload" as="font" crossorigin href="https://at.alicdn.com/t/font_zck90zmlh7hf47vi.woff">-->
+    <!--<link rel="preload" href="//cdn.cn/Page1-A.js" as="script">-->
+    <!--<link rel="preload" href="//cdn.cn/Page1-B.js" as="script">-->
+
+    <!--<link rel="prefetch" href="//cdn.cn/Page2.js">-->
+    <!--<link rel="prefetch" href="//cdn.cn/Page3.js">-->
+    <!--<link rel="prefetch" href="//cdn.cn/Page4.js">-->
+
+     <link href="https://cdn.bootcss.com/normalize/7.0.0/normalize.min.css" rel="stylesheet">
+<!--     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> -->
+     <link href="https://cdn.bootcss.com/tailwindcss/0.7.3/utilities.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.layuicdn.com/layui-v2.5.4/css/layui.css">
+
+    <style type="text/css">
+
+    </style>
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+<div class="layui-carousel" id="test1">
+    <div carousel-item>
+        <img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=282361299,3683719370&fm=26&gp=0.jpg" alt="" />
+        <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=83260682,137499108&fm=26&gp=0.jpg" />
+        <img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3294813362,2833915697&fm=26&gp=0.jpg" />
+        <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2737286945,1901393233&fm=26&gp=0.jpg" alt="" />
+    </div>
+
+
+</div>
+
+<div id="ctrl">
+    <button id="toggle_1">切换第1条</button>
+    <button id="toggle_2">切换第2条</button>
+    <button id="toggle_3">切换第3条</button>
+    <button id="toggle_4">切换第4条</button>
+</div>
+
+
+
+ <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<!-- <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+ <script src="https://www.layuicdn.com/layui-v2.5.4/layui.js"></script>
+<!--<script type="text/javascript" src="//cdn.cn/Page1-A.js" defer></script>-->
+<!--<script type="text/javascript" src="//cdn.cn/Page1-B.js" defer></script>-->
+
+
+
+ <script>
+     $(function () {
+       layui.use('carousel', function(){
+         var carousel = layui.carousel;
+         //建造实例
+         var instance =  carousel.render({
+           elem: '#test1',
+           width: '100%', //设置容器宽度
+           arrow: 'always', //始终显示箭头
+           autoplay: true,
+           //anim: 'updown' //切换动画方式
+         });
+
+
+         $('#ctrl button').on('click', function (index) {
+           var index = $(this).index();
+           instance.reload({
+               index: index
+           })
+
+           // @fix
+           $("#test1").find("img").eq(index).addClass("layui-this").siblings().removeClass("layui-this")
+         })
+
+       });
+     })
+
+
+
+ </script>
+
+<script>
+
+</script>
+
+</body>
+</html>
