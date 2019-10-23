@@ -62,7 +62,7 @@ exports.dev = {
     spriteOutputDir: `./_${sysName}/static/css`,
 
     // 字体子集化
-    fontSpiderDir: './public/fonts/hyzhj',
+    fontSpiderDir: './public/fonts/syht',
 
     // 离线
     pwaDir: './templates'

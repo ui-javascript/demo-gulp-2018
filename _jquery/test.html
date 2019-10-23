@@ -17,7 +17,8 @@
     <!--<link rel="prefetch" href="//cdn.cn/Page3.js">-->
     <!--<link rel="prefetch" href="//cdn.cn/Page4.js">-->
 
-    <!-- <link href="https://cdn.bootcss.com/tailwindcss/0.7.3/utilities.min.css" rel="stylesheet"> -->
+    <link href="https://cdn.bootcss.com/tailwindcss/0.7.4/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/tailwindcss/0.7.4/utilities.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/_style.css">
     <style type="text/css">
 
@@ -53,9 +54,68 @@
 </div>
 
 
+<div class="border-gray-200" style="width: 160px;">
+
+  <div class="inline-block" style="height: 42px; background: red;">12312321</div>
+  <div class="inline-block" style="height: 62px; background: teal;">12312321</div>
+
+  <a class="inline-block" href="阿萨德">啊实打实大</a>
+
+  <input class="inline-block" type="text" style="height:100%;" placeholder="123213213">
+
+</div>
+
+
+<div class="overflow-hidden relative border-gray-100">
+  <div class="float-left bg-red relative" style="top: 10px;">123123123123</div>
+  <div class="float-left bg-green">123123123123</div>
+  <div class="float-left bg-blue">123123123123</div>
+
+  <div class="bg-blue" style="width: 100px;height: 200px;">123123123123</div>
+</div>
+
+<div class="clearfix border-gray-100">
+  <div class="float-left bg-red">123123123123</div>
+  <div class="float-left bg-green">123123123123</div>
+  <div class="float-left bg-blue">123123123123</div>
+
+  <div class="bg-blue" style="width: 100px;height: 200px;">123123123123</div>
+</div>
+
+
+<div>
+</div>
+
+<div>
+
+</div>
+
+
  <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
 <!--<script type="text/javascript" src="//cdn.cn/Page1-A.js" defer></script>-->
 <!--<script type="text/javascript" src="//cdn.cn/Page1-B.js" defer></script>-->
  <script src="/static/js/index.js"></script>
+
+<script src="https://cdn.bootcss.com/decimal.js/10.2.0/decimal.min.js"></script>
+<script src="https://cdn.bootcss.com/mathjs/6.2.1/math.min.js"></script>
+
+<script>
+
+
+
+  console.log(math.add(0.1,0.2)) //0.30000000000000004
+  console.log(math.format(math.add(0.1,0.2))) //0.30000000000000004
+
+  // 使用Math计算decimal --> decimal.js支持
+  console.log((math.add(math.bignumber(0.1), math.bignumber(0.2))).toNumber()) // 0.3
+  math.config({
+    // 'number' (default), 'BigNumber', or 'Fraction'
+    number: 'BigNumber',
+    // Number of significant digits for BigNumbers
+    precision: 64
+  })
+  console.log(Decimal.add(0.1, 0.2).toNumber()) // 0.3
+  console.log(math.evaluate('0.1 + 0.2').toNumber())  // 0.3
+</script>
 </body>
 </html>

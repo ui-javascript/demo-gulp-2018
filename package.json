@@ -26,7 +26,9 @@
     "dev:picker": "set SYS_NAME=picker && gulp 01-build-dev",
     "dev:player": "set SYS_NAME=player && gulp 01-build-dev",
     "dev:tree": "set SYS_NAME=tree && gulp 01-build-dev",
-    "dev:uuploadDiff": "set SYS_NAME=uploadDiff && gulp 01-build-dev"
+    "dev:pdf": "set SYS_NAME=pdf && gulp 01-build-dev",
+    "dev:jquery": "set SYS_NAME=jquery && gulp 01-build-dev",
+    "dev:upload": "set SYS_NAME=upload && gulp 01-build-dev"
   },
   "author": "luo0412",
   "devDependencies": {

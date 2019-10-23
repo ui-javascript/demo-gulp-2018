@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Demo</title>
+
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+
+
+<script src="https://cdn.bootcss.com/avalon.js/2.0s/avalon.min.js"></script>
+<script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+
+
+<div id="app">
+    <input v-model="message" />
+    <p>
+        {{ message }}
+    </p>
+</div>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      message: 'Hello world',
+    },
+    methods: {
+    }
+  })
+
+</script>
+
+</body>
+</html>
