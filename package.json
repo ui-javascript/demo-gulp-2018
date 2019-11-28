@@ -4,17 +4,19 @@
   "description": "gulp-jquery",
   "main": "index.js",
   "scripts": {
+    "install:tyarn": "tyarn install",
     "install:cnpm": "cnpm install",
     "remove": "rimraf node_modules",
-    "clean": "set SYS_NAME=door && gulp 00-clean-dist",
-    "dev": "set SYS_NAME=door && gulp 01-build-dev",
-    "cssWatch": "set SYS_NAME=door && gulp 02-css-job",
-    "build": "set SYS_NAME=door && gulp 03-build-dist",
-    "buildPWA": "set SYS_NAME=door && gulp 04-build-pwa",
-    "sprite": "set SYS_NAME=door && gulp 05-make-sprite",
-    "imagesOptimize": "set SYS_NAME=door && gulp 06-images-optimize",
-    "fontSpider": "set SYS_NAME=door && gulp 07-font-spider",
-    "libsGenerate": "set SYS_NAME=door && gulp 08-libs-generate",
+
+    "clean": "set SYS_NAME=demo && gulp 00-clean-dist",
+    "dev": "set SYS_NAME=demo && gulp 01-build-dev",
+    "cssWatch": "set SYS_NAME=demo && gulp 02-css-job",
+    "build": "set SYS_NAME=demo && gulp 03-build-dist",
+    "buildPWA": "set SYS_NAME=demo && gulp 04-build-pwa",
+    "sprite": "set SYS_NAME=demo && gulp 05-make-sprite",
+    "imagesOptimize": "set SYS_NAME=demo && gulp 06-images-optimize",
+    "fontSpider": "set SYS_NAME=demo && gulp 07-font-spider",
+    "libsGenerate": "set SYS_NAME=demo && gulp 08-libs-generate",
 
     "dev:table": "set SYS_NAME=table && gulp 01-build-dev",
     "build:table": "set SYS_NAME=table && gulp 03-build-dist",
@@ -22,13 +24,15 @@
     "fontSpider:table": "set SYS_NAME=table && gulp 07-font-spider",
 
     "dev:slider": "set SYS_NAME=slider && gulp 01-build-dev",
-    "dev:zxxQuiz": "set SYS_NAME=zxxQuiz && gulp 01-build-dev",
-    "dev:picker": "set SYS_NAME=picker && gulp 01-build-dev",
+    "dev:css-world": "set SYS_NAME=css-world && gulp 01-build-dev",
+    "dev:form": "set SYS_NAME=form && gulp 01-build-dev",
     "dev:player": "set SYS_NAME=player && gulp 01-build-dev",
     "dev:tree": "set SYS_NAME=tree && gulp 01-build-dev",
-    "dev:pdf": "set SYS_NAME=pdf && gulp 01-build-dev",
+    "dev:tools": "set SYS_NAME=tools && gulp 01-build-dev",
     "dev:jquery": "set SYS_NAME=jquery && gulp 01-build-dev",
-    "dev:upload": "set SYS_NAME=upload && gulp 01-build-dev"
+    "dev:upload": "set SYS_NAME=upload && gulp 01-build-dev",
+    "dev:dashboard": "set SYS_NAME=dashboard && gulp 01-build-dev",
+    "dev:dashboard-template": "set SYS_NAME=dashboard-template && gulp 01-build-dev"
   },
   "author": "luo0412",
   "devDependencies": {

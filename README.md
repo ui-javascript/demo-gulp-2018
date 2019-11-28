@@ -5,7 +5,7 @@
 我平时用来测试各种jQuery的插件
 ```
 
-# 前端技术栈
+# 技术栈
 
 - gulp3
 - browserSync 
@@ -53,19 +53,27 @@
 
 # TODO
 
-- cdn文件打包的拷贝
-- gulp-changed --> 仅处理发生变化的 提高性能
-- gulp-if --> 任务定制
-- cdn路径替换功能 eg. bootcdn --> localhost
-- 参照tmt-workflow优化
-- 公共库的提取压缩
-- 前端权限功能与前端路由
-- 模块化与异步处理Demo
+- [ ] cdn文件打包的拷贝
+- [ ] gulp-changed --> 仅处理发生变化的 提高性能
+- [ ] gulp-if --> 任务定制
+- [ ] cdn路径替换功能 eg. bootcdn --> localhost
+- [ ] 参照tmt-workflow优化
+- [ ] 公共库的提取压缩
+- [ ] 前端权限功能与前端路由
+- [ ] 模块化与异步处理Demo
+
+# FAQ
+
+
+- primordials is not defined
+
+```
+gulp构建时报错
+降低node版本 eg. 8.9.4
+```
+
 - less有时报错终止?? 
 
-# 注意
-
-- 新增/删除文件 要重启项目
 
 # 使用说明
 
@@ -93,6 +101,10 @@
 build/config下新建工程同名文件
 进行覆盖
 ```
+
+# 特别注意
+
+- 新增/删除文件 要重启项目
 
 # 视图
 
